@@ -1,0 +1,59 @@
+[
+    {
+        "category_type": "FRIENDS",
+        "intersections": [
+            {
+                "description": "You have mutal friend Mark Riabov",
+                "tips": [
+                    {
+                        "text": "It seems that we both know Mark Riabov. How did we meet? :)",
+                        "weight": 1,
+                        "algo_id": 1
+                    },
+                    {
+                        "text": "It seems that we both know Mark Riabov. It is cool!",
+                        "weight": 1,
+                        "algo_id": 2
+                    }
+                ],
+                "weight": 1,
+                "algo_id": 1
+            },
+            {
+                "description": "You have mutal friend Maria  Sandrikova",
+                "tips": [
+                    {
+                        "text": "It seems that we both know Maria  Sandrikova. How did we meet? :)",
+                        "weight": 1,
+                        "algo_id": 3
+                    },
+                    {
+                        "text": "It seems that we both know Maria  Sandrikova. It is cool!",
+                        "weight": 1,
+                        "algo_id": 4
+                    }
+                ],
+                "weight": 1,
+                "algo_id": 2
+            },
+            {
+                "description": "You have mutal friend Alexander  Danilyak",
+                "tips": [
+                    {
+                        "text": "It seems that we both know Alexander  Danilyak. How did we meet? :)",
+                        "weight": 1,
+                        "algo_id": 5
+                    },
+                    {
+                        "text": "It seems that we both know Alexander  Danilyak. It is cool!",
+                        "weight": 1,
+                        "algo_id": 6
+                    }
+                ],
+                "weight": 1,
+                "algo_id": 3
+            }
+        ],
+        "weight": -1
+    }
+]

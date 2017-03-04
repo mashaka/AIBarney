@@ -7,6 +7,7 @@ from typing import Tuple, Dict
 import logging
 
 from .general_info import GeneralInfo
+from .friends_processor import FriendsProcessor
 from .tools import UpdateInfo, InputData, DataNLP, CategoryType
 
 NOT_FOUND = -1
@@ -41,8 +42,7 @@ class Category:
             # TODO
             pass
         elif self.type is CategoryType.FRIENDS:
-            # TODO
-            pass
+            self.processor = FriendsProcessor(data.data_0)
         elif self.type is CategoryType.SPORT:
             # TODO
             pass
