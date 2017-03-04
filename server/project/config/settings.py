@@ -25,7 +25,7 @@ SECRET_KEY = 'in#qqpeg34&-z5x7q2arip36l_(26^_f7jr79x*6!%4lef12b*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ryadom.me:8080', 'ryadom.me']
+ALLOWED_HOSTS = ['ryadom.me:8000', 'ryadom.me', 'localhost']
 
 
 # Application definition
@@ -87,7 +87,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'fffb3dcfc549d4033a2d13aa918a26d0'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_posts']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'locale': 'en_EN',
-    'fields': 'id, name, email, age_range'
+    'fields': 'id,name,email,age_range,user_posts,publish_pages,user_managed_groups,pages_messaging,user_actions.fitness,user_about_me,user_actions.books,user_actions.news,business_management,read_insights,user_tagged_places,user_relationships,user_birthday,user_videos,user_events,user_games_activity,user_status,pages_manage_instant_articles,user_website,user_relationship_details,user_photos,user_hometown,user_likes,user_work_history,publish_actions,pages_messaging_phone_number,read_page_mailboxes,user_actions.music,read_custom_friendlists,user_religion_politics,rsvp_event,manage_pages,user_location,user_actions.video,user_education_history'
 }
 SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.8'
 
