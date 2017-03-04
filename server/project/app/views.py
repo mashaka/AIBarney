@@ -4,6 +4,7 @@ from .models import *
 from .serializers import *
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
+from rest_framework.response import Response
 
 class MessageList(generics.ListCreateAPIView):
     serializer_class = MessageSerializer
@@ -43,6 +44,10 @@ class MeUser(generics.RetrieveAPIView):
 
 
 class StartChat(APIView):
+    permission_classes = (
+            permissions.IsAuthenticated,
+    )
+
     def post(self, request, user_id, format=None):
         print(user_id)
         return Response()
