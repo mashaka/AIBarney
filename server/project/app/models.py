@@ -10,11 +10,10 @@ class UserData(models.Model):
     data = models.TextField(null=True,default=None)
 
 class Chat(models.Model):
-    firt_user = models.ForeignKey(Profile, related_name='fuser')
-    second_user = models.ForeignKey(Profile, related_name='suser')
+    users = models.ManyToManyField(Profile)
 
 class Message(models.Model):
     text = models.TextField()
     author = models.ForeignKey(Profile)
     add_time = models.DateTimeField(auto_now_add=True)
-    chat_id = models.ForeignKey(Chat)
+    chat = models.ForeignKey(Chat)
