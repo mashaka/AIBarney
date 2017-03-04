@@ -32,7 +32,7 @@ class ChatSerializer(serializers.ModelSerializer):
     
     def mget_last_message(self, chat):
         return (MessageSerializer(**{'context': self.context}).
-            to_representation(chat.messages.
+            to_representation(chat[0].messages.
                 order_by('-add_time').first()))
 
     class Meta:
