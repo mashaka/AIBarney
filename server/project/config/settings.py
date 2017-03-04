@@ -128,7 +128,6 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = [
 'business_management',
 'pages_messaging',
 'pages_messaging_subscriptions',
-'pages_messaging_payments',
 'pages_messaging_phone_number',
 ]
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
