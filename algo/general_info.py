@@ -5,9 +5,13 @@
 
 from typing import List, Tuple
 import json
+import logging
 
 from .intersection import Intersection
 from .tip import Tip
+from .tools import UpdateInfo, DataNLP, UpdateType
+
+module_logger = logging.getLogger('GeneralInfo')
 
 NOT_FOUND = -1
 
@@ -36,9 +40,13 @@ class GeneralInfo:
         self.find_experience_intersection()
         # Home hometown intersetion
         self.find_hometown_intersection()
-        return []
+        module_logger.info('Find {} intersections'.format(len(self.intersections)))
+        return self.intersections
 
     def find_education_intersection(self):
+        if EDUCATION not in self.data[0] or EDUCATION not in self.data[1]:
+            module_logger.info('Receive no info about education')
+            return
         for education_0 in self.data[0][EDUCATION]:
             for education_1 in self.data[0][EDUCATION]:
                 if education_0[SCHOOL][ID] == education_1[SCHOOL][ID]:
@@ -71,6 +79,9 @@ class GeneralInfo:
         return Intersection(desc, weight, content, tips)
 
     def find_experience_intersection(self):
+        if WORK not in self.data[0] or WORK not in self.data[1]:
+            module_logger.info('Receive no info about work experience')
+            return
         for work_0 in self.data[0][WORK]:
             for work_1 in self.data[0][WORK]:
                 if work_0[EMPLOYER][ID] == work_1[EMPLOYER][ID]:
@@ -123,6 +134,9 @@ class GeneralInfo:
         return Intersection(desc, weight, content, tips)
 
     def find_hometown_intersection(self):
+        if HOMETOWN not in self.data[0] or HOMETOWN not in self.data[1]:
+            module_logger.info('Receive no info about hometown')
+            return
         if self.data[0][HOMETOWN][ID] == self.data[1][HOMETOWN][ID]:
             self.intersections.append(
                 self.get_hometown_intersection(
@@ -142,3 +156,14 @@ class GeneralInfo:
             )
         ]
         return Intersection(desc, weight, content, tips)
+
+    def update(self, data: UpdateInfo, dataNLP: DataNLP):
+        if UpdateType.DELETE_TIP == data.type:
+            # TODO
+            pass
+        elif UpdateType.INCOME_MSG == data.type:
+            # TODO
+            pass
+        elif UpdateType.OUTCOME_MSG == data.type:
+            # TODO
+            pass

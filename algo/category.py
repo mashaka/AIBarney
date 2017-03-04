@@ -3,73 +3,66 @@
 # Copyright 2017
 #####
 
-from typing import Tuple
-from enum import Enum, unique
+from typing import Tuple, Dict
+import logging
 
 from .general_info import GeneralInfo
+from .tools import UpdateInfo, InputData, DataNLP, CategoryType
 
 NOT_FOUND = -1
 
-@unique
-class CategoryType(Enum):
-    GENERAL_INFO = 1
-    MUSIC = 2
-    BOOKS = 3
-    MOVIES = 4
-    TRIPS = 5
-    GROUPS = 6
-    HASHTAGS = 7
-    FRIENDS = 8
-    SPORT = 9
-
-    
-class InputData:
-
-    def __init__(self, type: CategoryType, data):
-        self.type = type
-        self.data = data    
-
+module_logger = logging.getLogger('Category')
 
 class Category: 
 
     TAG = 'Category'
 
     def __init__(self, data: Tuple[InputData]):
-        if data[0].type != data[1].type:
-            raise ValueError('{}: input data should have equal type, but received {} and {}'.format(
-                TAG,
-                data[0].type.name,
-                data[1].type.name
-            ))
-        self.type = data[0].type
-        if self.type == CategoryType.GENERAL_INFO:
+        self.type = data.type
+        module_logger.info('Receive {} category'.format(self.type.name))
+        if self.type is CategoryType.GENERAL_INFO:
+            self.processor = GeneralInfo((data.data_0, data.data_1))
+        elif self.type is CategoryType.MUSIC:
             # TODO
-            self.intersections = GeneralInfo((data[0].data, data[1].data)).process()
-        elif self.type == CategoryType.MUSIC:
+            pass
+        elif self.type is CategoryType.BOOKS:
             # TODO
-            self.intersections = []
-        elif self.type == CategoryType.BOOKS:
+            pass
+        elif self.type is CategoryType.MOVIES:
             # TODO
-            self.intersections = []
-        elif self.type == CategoryType.MOVIES:
+            pass
+        elif self.type is CategoryType.TRIPS:
             # TODO
-            self.intersections = []
-        elif self.type == CategoryType.TRIPS:
-            self.intersections = []
-        elif self.type == CategoryType.GROUPS:
+            pass
+        elif self.type is CategoryType.GROUPS:
             # TODO
-            self.intersections = []
-        elif self.type == CategoryType.HASHTAGS:
+            pass
+        elif self.type is CategoryType.HASHTAGS:
             # TODO
-            self.intersections = []
-        elif self.type == CategoryType.FRIENDS:
+            pass
+        elif self.type is CategoryType.FRIENDS:
             # TODO
-            self.intersections = []
-        elif self.type == CategoryType.SPORT:
+            pass
+        elif self.type is CategoryType.SPORT:
             # TODO
-            self.intersections = []
+            pass
+        else:
+            raise(ValueError('{}: Unsupported category type'.format(self.TAG)))
+        self.intersections = self.processor.process()
         # TODO: compute intersection weights
         self.weight = NOT_FOUND
 
-    def set_weight(self, weight: int):
+    def update(self, data: UpdateInfo, dataNLP: DataNLP):
+        return sef.processor.update(data, dataNLP)
+
+    def set_weight(self, weight: float):
         self.weight = weight
+
+    def serialize(self) -> Dict:
+        output_dict = dict()
+        output_dict['category_type'] = self.type.name
+        output_dict['weight'] = self.weight
+        output_dict['intersections'] = []
+        for intersection in self.intersections:
+            output_dict['intersections'].append(intersection.serialize())
+        return output_dict
