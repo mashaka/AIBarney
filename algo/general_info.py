@@ -62,15 +62,13 @@ class GeneralInfo:
         content = (None, None)
         tips = [
             Tip(
-                'Wow, i have just seen in your \
-                facebook that we both studied in {}. That\'s cool!'.format(
+                'Wow, i have just seen in your facebook that we both studied in {}. That\'s cool!'.format(
                     educations[0][SCHOOL][NAME]
                 ),
                 1
             ),
             Tip(
-                'Do you love {}? I also studied there \
-                and these days were great :)'.format(
+                'Do you love {}? I also studied there and these days were great :)'.format(
                     educations[0][SCHOOL][NAME]
                 ),
                 1
@@ -103,15 +101,13 @@ class GeneralInfo:
         content = (None, None)
         tips = [
             Tip(
-                'Wow, i have just seen in your \
-                facebook that we both work in {}. That\'s cool!'.format(
+                'Wow, i have just seen in your facebook that we both work in {}. That\'s cool!'.format(
                     works[0][EMPLOYER][NAME]
                 ),
                 1
             ),
             Tip(
-                'Do you love {}? I also worked there \
-                and these days were great :)'.format(
+                'Do you love {}? I also worked there and these days were great :)'.format(
                     works[0][EMPLOYER][NAME]
                 ),
                 1

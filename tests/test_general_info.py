@@ -38,4 +38,4 @@ class GeneralInfoTestSuite(unittest.TestCase):
         chat_room = ChatRoom(self.input_data)
         output_dict =  chat_room.get_tips()
         with open(OUTPUT_FILE, mode='w', encoding='utf8') as f:
-            json.dump(output_dict, f, indent=4)
+            json.dump(output_dict, f, indent=4, ensure_ascii=False)
