@@ -13,7 +13,7 @@ class MessageList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
-        instance = serializer.save(author=profile, room=room)
+        instance = serializer.save(author=profile, chat=chat)
 
     def get_queryset(self):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
