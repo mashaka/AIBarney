@@ -10,7 +10,7 @@ class Profile(models.Model):
 
 class UserData(models.Model):
     user = models.OneToOneField(User)
-    data = models.TextField(null=True,default=None)
+    data = models.TextField()
 
     def __str__(self):
         return 'UserData ' + str(self.user.id)
@@ -32,4 +32,8 @@ class Message(models.Model):
     def __str__(self):
         return 'Message ' + str(self.id) + ' in ' + str(self.chat.id)
 
-
+class Queue(models.Model):
+    add_time = models.DateTimeField(auto_now_add=True)
+    type = models.CharField(max_length=10)
+    args = models.TextField()
+    done = models.BooleanField(default=False)
