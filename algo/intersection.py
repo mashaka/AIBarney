@@ -36,6 +36,7 @@ class Intersection:
         output_dict['weight'] = self.weight
         if self.content[0] is not None:
             output_dict['content_0'] = self.content[0].serialize()
+        if self.content[1] is not None:
             output_dict['content_1'] = self.content[1].serialize()
         output_dict['tips'] = []
         for tip in self.tips:

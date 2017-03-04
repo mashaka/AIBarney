@@ -1,83 +1,83 @@
 [
     {
-        "category_type": "GENERAL_INFO",
         "intersections": [
             {
-                "description": "You both studied in центр образования 218",
+                "algo_id": 4,
                 "tips": [
                     {
                         "text": "Wow, i have just seen in your facebook that we both studied in центр образования 218. That's cool!",
-                        "weight": 1,
-                        "algo_id": 7
+                        "algo_id": 7,
+                        "weight": 1
                     },
                     {
                         "text": "Do you love центр образования 218? I also studied there and these days were great :)",
-                        "weight": 1,
-                        "algo_id": 8
+                        "algo_id": 8,
+                        "weight": 1
                     }
                 ],
                 "weight": 1,
-                "algo_id": 4
+                "description": "You both studied in центр образования 218"
             },
             {
-                "description": "You both studied in МФТИ",
+                "algo_id": 5,
                 "tips": [
                     {
                         "text": "Wow, i have just seen in your facebook that we both studied in МФТИ. That's cool!",
-                        "weight": 1,
-                        "algo_id": 9
+                        "algo_id": 9,
+                        "weight": 1
                     },
                     {
                         "text": "Do you love МФТИ? I also studied there and these days were great :)",
-                        "weight": 1,
-                        "algo_id": 10
+                        "algo_id": 10,
+                        "weight": 1
                     }
                 ],
                 "weight": 1,
-                "algo_id": 5
+                "description": "You both studied in МФТИ"
             },
             {
-                "description": "You both workes in ABBYY",
+                "algo_id": 6,
                 "tips": [
                     {
                         "text": "Wow, i have just seen in your facebook that we both work in ABBYY. That's cool!",
-                        "weight": 1,
-                        "algo_id": 11
+                        "algo_id": 11,
+                        "weight": 1
                     },
                     {
                         "text": "Do you love ABBYY? I also worked there and these days were great :)",
-                        "weight": 1,
-                        "algo_id": 12
+                        "algo_id": 12,
+                        "weight": 1
                     }
                 ],
                 "weight": 1,
-                "algo_id": 6
+                "description": "You both workes in ABBYY"
             },
             {
-                "description": "You both workes as Software Engineer",
+                "algo_id": 7,
                 "tips": [
                     {
                         "text": "Wow, you are also Software Engineer. That's cool!",
-                        "weight": 1,
-                        "algo_id": 13
+                        "algo_id": 13,
+                        "weight": 1
                     }
                 ],
                 "weight": 0.9,
-                "algo_id": 7
+                "description": "You both workes as Software Engineer"
             },
             {
-                "description": "You both born in Moscow, Russia",
+                "algo_id": 8,
                 "tips": [
                     {
                         "text": "You also from Moscow, Russia, aren't you?",
-                        "weight": 1,
-                        "algo_id": 14
+                        "algo_id": 14,
+                        "weight": 1
                     }
                 ],
                 "weight": 1,
-                "algo_id": 8
+                "description": "You both born in Moscow, Russia"
             }
         ],
-        "weight": -1
+        "weight": 1,
+        "category_type": "GENERAL_INFO"
     }
 ]

@@ -27,6 +27,7 @@ class MessageList(generics.ListCreateAPIView):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
         instance = serializer.save(author=profile, chat=chat)
+        Queue.objects.create(type='message', args=str(instance.id))
         user_to = [p.user.id for p in chat.users.all() if p.id != profile.id][0]
         channel = str(user_to) + '_' + str(chat.id)
         msg = serializer.to_representation(instance)
@@ -74,6 +75,8 @@ class StartChat(generics.CreateAPIView):
             instance.users.add(profile)
             instance.users.add(user)
             instance.save()
+            Queue.objects.create(type='start_chat',
+                    args=str(instance.id))
         else:
             raise Http404()
 

@@ -5,9 +5,11 @@ import random
 
 MINIMAL_BOOKS_LIKES = 50
 
-class Booksroccessor:
+class BookProccessor:
 
-    def __init__( firstDataList: List[Dict], secondDataList: List[Dict] ):
+    def __init__( selft, firstData, secondData ):
+        firstDataList = firstData["data"]
+        secondDataList = secondData["data"]
         firstIds = set( map( lambda x: x["id"], firstDataList ) )
         secondIds = set( map( lambda x: x["id"], secondDataList ) )
         intersectionIds = firstIds & secondIds
@@ -32,11 +34,11 @@ class Booksroccessor:
             0.1 ) )
         
         for data in self.commonBooks:
-            discussBookTip = "What do you like about book" + data["name"] + "?"
+            discussBookTip = "What do you like about book " + data["name"] + "?"
 
-            intersections.append( Intersection( tipString( data, "Like book" + data["name"] "" ), 
-                0.5, [None, None], [ Tip( discussMovieTip, 0.9 ),
-                Tip( discussSimilarMovieTip, 1.0 ) ] ) )
+            intersections.append( Intersection( "Like book" + data["name"] + "" ), 
+                0.5, [None, None], [ Tip( discussBookTip, 0.9 ),
+                Tip( discussSimilarMovieTip, 1.0 ) ] )
 
     def update():
         pass
