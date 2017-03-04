@@ -10,14 +10,17 @@ from social_django.models import UserSocialAuth
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from rest_framework.authtoken.models import Token
+from app.methods import prepare_user
 
 def get_token(request):
-    response = HttpResponse("", status=302)
     if request.user:
+        prepare_user(user)
         token,_ = Token.objects.get_or_create(user=request.user)
-        response['Location'] = "chatbot://token=" + token.key
+        url = "chatbot://?token=" + token.key
     else:
-        response['Location'] = "chatbot://error"
+        url = "chatbot://error"
+    response = HttpResponse(url, status=302)
+    response['Location'] = url
     return response
 
 @login_required
