@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'social_django',
     'cauth',
     'rest_framework.authtoken',
+    'app',
 ]
 
 MIDDLEWARE = [

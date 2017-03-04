@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth_models import User
+from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
@@ -7,11 +7,11 @@ class Profile(models.Model):
 
 class UserData(models.Model):
     user = models.OneToOneField(User)
-    data = TextField(null=True,default=None)
+    data = models.TextField(null=True,default=None)
 
 class Chat(models.Model):
-    firt_user = models.ForeignKey(Profile)
-    second_user = models.ForeignKey(Profile)
+    firt_user = models.ForeignKey(Profile, related_name='fuser')
+    second_user = models.ForeignKey(Profile, related_name='suser')
 
 class Message(models.Model):
     text = models.TextField()
