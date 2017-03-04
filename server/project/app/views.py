@@ -43,12 +43,16 @@ class MeUser(generics.RetrieveAPIView):
 
 
 
-class StartChat(APIView):
+class StartChat(CreateAPIView):
     permission_classes = (
             permissions.IsAuthenticated,
     )
 
-    def post(self, request, user_id, format=None):
-        print(user_id)
-        return Response()
+    def perform_create(self, serializer):
 
+        user = get_object_or_404(User, id=self.kwargs['user_id'])
+        profile = self.request.user.profile
+        instance = serializer.save()
+        instance.users.add(profile)
+        instance.users.add(user.profile)
+        instance.save()
