@@ -63,7 +63,7 @@ def start_chat(chat):
 def new_message(msg):
     chata = ChatData.objects.get(user=msg.author.user, chat=msg.chat)
     userb = msg.chat.users.all().exclude(
-            id=msg.author.user.id).first()
+            user=msg.author.user).first().user
     chatb = ChatData.objects.get(user=userb, chat=msg.chat)
     rooma = pickle.loads(chata.data)
     roomb = pickle.loads(chatb.data)
