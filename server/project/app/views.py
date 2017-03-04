@@ -62,4 +62,5 @@ class StartChat(generics.CreateAPIView):
             instance.users.add(user)
             instance.save()
             return
+        print(Chat)
         raise Http404()
