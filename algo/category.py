@@ -10,9 +10,8 @@ from .general_info import GeneralInfo
 from .friends_processor import FriendsProcessor
 from .tools import UpdateInfo, InputData, DataNLP, CategoryType
 
-NOT_FOUND = -1
-
 module_logger = logging.getLogger('Category')
+
 
 class Category: 
 
@@ -49,14 +48,10 @@ class Category:
         else:
             raise(ValueError('{}: Unsupported category type'.format(self.TAG)))
         self.intersections = self.processor.process()
-        # TODO: compute intersection weights
-        self.weight = NOT_FOUND
+        self.weight = 1
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
         return sef.processor.update(data, dataNLP)
-
-    def set_weight(self, weight: float):
-        self.weight = weight
 
     def serialize(self) -> Dict:
         output_dict = dict()
