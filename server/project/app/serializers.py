@@ -28,9 +28,9 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ChatSerializer(serializers.ModelSerializer):
-    last_message = serializers.SerializerMethodField()
+    last_message = serializers.SerializerMethodField(method_name='mget_last_message')
     
-    def get_last_message(self, chat):
+    def mget_last_message(self, chat):
         return (MessageSerializer(**{'context': self.context}).
             to_representation(chat.messages.
                 order_by('-add_time').first()))
