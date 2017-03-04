@@ -44,7 +44,7 @@ STOP = False
 
 def build_input_data(dataa, datab):
     res = []
-    res.append(algo.InputData(CategoryType.GENERAL_INFO,
+    res.append(algo.InputData(algo.CategoryType.GENERAL_INFO,
                         dataa['general'],
                         datab['general']))
     return res
