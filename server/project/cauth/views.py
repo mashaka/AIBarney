@@ -7,6 +7,13 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from social_django.models import UserSocialAuth
+from django.http import HttpResponse
+
+
+@login_required
+def get_facebook_token(request):
+    q=UserSocialAuth.objects.filter(user=requests.user,provider='facebook')
+    return HttpResponse(str(q.extra_data))
 
 def signup(request):
     if request.method == 'POST':
