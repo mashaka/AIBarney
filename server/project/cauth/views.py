@@ -14,7 +14,7 @@ from app.methods import prepare_user
 
 def get_token(request):
     if request.user:
-        prepare_user(user)
+        prepare_user(request.user)
         token,_ = Token.objects.get_or_create(user=request.user)
         url = "chatbot://?token=" + token.key
     else:
