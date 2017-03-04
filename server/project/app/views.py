@@ -29,7 +29,7 @@ class UserList(generics.ListAPIView):
     def get_queryset(self):
         return Profile.objects.exclude(user=self.request.user)
 
-class MeUser(generics.ListAPIView):
+class MeUser(generics.RetrieveAPIView):
     serializer_class = ProfileSerializer
 
     permission_classes = (
