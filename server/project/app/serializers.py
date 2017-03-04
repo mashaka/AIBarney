@@ -25,3 +25,4 @@ class MessageSerializer(serializers.ModelSerializer):
         return ProfileSerializer(**{'context': self.context}).to_representation(post.author)
     class Meta:
         model = Message
+        fields = '__all__'
