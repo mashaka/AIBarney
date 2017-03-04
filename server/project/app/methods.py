@@ -60,11 +60,29 @@ def start_chat(chat):
     ChatData.objects.create(user=userb.user, chat=chat,
             data=pickle.dumps(chatb))
 
+def new_message(msg):
+    chata = ChatData.objects.get(user=msg.author.user, chat=msg.chat)
+    userb = msg.chat.users.all().exclude(
+            user=msg.author.user).first().user
+    chatb = ChatData.objects.get(user=userb, chat=msg.chat)
+    rooma = pickle.loads(chata.data)
+    roomb = pickle.loads(chatb.data)
+    rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_MSG,
+                                msg.text))
+    roomb.update(algo.UpdateInfo(algo.UpdateType.INCOME_MSG,
+                                msg.text))
+    chata.data = pickle.dumps(rooma)
+    chata.save()
+    chatb.data = pickle.dumps(roomb)
+    chatb.save()
+
 def process_queue_item(job):
     if job.type == 'fetch':
         download_data(User.objects.get(id=int(job.args)))
     elif job.type == 'start_chat':
         start_chat(Chat.objects.get(id=int(job.args)))
+    elif job.type == 'message':
+        new_message(Message.objects.get(id=int(job.args)))
     else:
         raise Exception('Unknown job type ' + job.type)
     job.done = True

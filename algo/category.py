@@ -54,7 +54,7 @@ class Category:
         self.weight = NOT_FOUND
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
-        return sef.processor.update(data, dataNLP)
+        return self.processor.update(data, dataNLP)
 
     def set_weight(self, weight: float):
         self.weight = weight
