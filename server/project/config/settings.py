@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'social_django',
     'cauth',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 AUTHENTICATION_BACKENDS = (
+    'rest_framework.authentication.TokenAuthentication',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -84,7 +86,6 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1395474097183503'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'fffb3dcfc549d4033a2d13aa918a26d0'
-#SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','user_posts','age_range','publish_pages','user_managed_groups','pages_messaging','user_actions.fitness','user_about_me','user_actions.books','user_actions.news','business_management','read_insights','user_tagged_places','user_relationships','user_birthday','user_videos','user_events']#,'user_games_activity','user_status','pages_manage_instant_articles','user_website','user_relationship_details','user_photos','user_hometown','user_likes','user_work_history','publish_actions','pages_messaging_phone_number','read_page_mailboxes','user_actions.music','read_custom_friendlists','user_religion_politics','rsvp_event','manage_pages','user_location','user_actions.video','user_education_history']
 SOCIAL_AUTH_FACEBOOK_SCOPE = [
 'public_profile',
 'user_friends',
@@ -181,7 +182,7 @@ USE_TZ = True
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'get_token'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
