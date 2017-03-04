@@ -25,7 +25,7 @@ class MessageSerializer(serializers.ModelSerializer):
         return ProfileSerializer(**{'context': self.context}).to_representation(post.author)
     class Meta:
         model = Message
-        fields = '__all__'
+        fields = ('id', 'author', 'text', 'add_time')
 
 class ChatSerializer(serializers.ModelSerializer):
     last_message = serializers.SerializerMethodField(method_name='mget_last_message')
