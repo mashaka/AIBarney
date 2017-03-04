@@ -12,7 +12,7 @@ from django.http import HttpResponse
 
 @login_required
 def get_facebook_token(request):
-    q=UserSocialAuth.objects.filter(user=requests.user,provider='facebook')
+    q=UserSocialAuth.objects.filter(user=request.user,provider='facebook')
     return HttpResponse(str(q.extra_data))
 
 def signup(request):
