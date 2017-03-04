@@ -84,7 +84,18 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1395474097183503'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'fffb3dcfc549d4033a2d13aa918a26d0'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','user_posts','age_range','publish_pages','user_managed_groups','pages_messaging','user_actions.fitness','user_about_me','user_actions.books','user_actions.news','business_management','read_insights','user_tagged_places','user_relationships','user_birthday','user_videos','user_events']#,'user_games_activity','user_status','pages_manage_instant_articles','user_website','user_relationship_details','user_photos','user_hometown','user_likes','user_work_history','publish_actions','pages_messaging_phone_number','read_page_mailboxes','user_actions.music','read_custom_friendlists','user_religion_politics','rsvp_event','manage_pages','user_location','user_actions.video','user_education_history']
+#SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','user_posts','age_range','publish_pages','user_managed_groups','pages_messaging','user_actions.fitness','user_about_me','user_actions.books','user_actions.news','business_management','read_insights','user_tagged_places','user_relationships','user_birthday','user_videos','user_events']#,'user_games_activity','user_status','pages_manage_instant_articles','user_website','user_relationship_details','user_photos','user_hometown','user_likes','user_work_history','publish_actions','pages_messaging_phone_number','read_page_mailboxes','user_actions.music','read_custom_friendlists','user_religion_politics','rsvp_event','manage_pages','user_location','user_actions.video','user_education_history']
+SOCIAL_AUTH_FACEBOOK_SCOPE = [
+        'public_profile',
+'user_friends',
+'email',
+'user_about_me',
+'user_actions.books',
+'user_actions.fitness',
+'user_actions.music',
+'user_actions.news',
+'user_actions.video',
+]
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'locale': 'en_EN',
     'fields': 'id,name,email',
