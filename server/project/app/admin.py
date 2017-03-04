@@ -13,4 +13,15 @@ class MessageAdmin(admin.ModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     pass
-# Register your models here.
+
+
+@admin.register(Queue)
+class QueueAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(UserData)
+class UserDataAdmin(admin.ModelAdmin):
+    pass
+
+
+
