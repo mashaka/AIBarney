@@ -54,13 +54,13 @@ class StartChat(generics.CreateAPIView):
     def perform_create(self, serializer):
         user = get_object_or_404(User, id=self.kwargs['user_id']).profile
         profile = self.request.user.profile
-        try:
-            Chat.objects.get(users__in = [user, profile])
-        except Chat.DoesNotExist:
+        chat = Chat.objects.filter(
+                users=user).filter(users=profile)
+        if chat.count() == 0:
             instance = serializer.save()
             instance.users.add(profile)
             instance.users.add(user)
             instance.save()
-            return
-        print(Chat)
-        raise Http404()
+        else:
+            raise Http404()
+
