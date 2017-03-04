@@ -56,7 +56,7 @@ class UserListSerializer(ProfileSerializer):
                 to_representation(chat))
 
     def get_has_chat(self, profile):
-        return self.get_chat_ins(profile) == None
+        return self.get_chat_ins(profile) is not None
 
     class Meta:
         model = Profile
