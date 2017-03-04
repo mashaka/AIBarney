@@ -1,0 +1,257 @@
+[
+    {
+        "category_type": "MUSIC",
+        "weight": -1,
+        "intersections": [
+            {
+                "algo_id": 21,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of LiSA ",
+                "tips": [
+                    {
+                        "algo_id": 39,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like LiSA songs?"
+                    },
+                    {
+                        "algo_id": 40,
+                        "weight": 0.5,
+                        "text": "You seem to like LiSA musics. What is your favourite?"
+                    },
+                    {
+                        "algo_id": 41,
+                        "weight": 0.3,
+                        "text": "Hey, you like LiSA. There will be LiSA \"LiVE is Smile Always～Little Devil Parade～\" (Hyogo)at World Memorial Hall in Kobe-shi. Do you mind going together?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 22,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Egoist ",
+                "tips": [
+                    {
+                        "algo_id": 42,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Egoist songs?"
+                    },
+                    {
+                        "algo_id": 43,
+                        "weight": 0.5,
+                        "text": "You seem to like Egoist musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 23,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of ClariS ",
+                "tips": [
+                    {
+                        "algo_id": 44,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like ClariS songs?"
+                    },
+                    {
+                        "algo_id": 45,
+                        "weight": 0.5,
+                        "text": "You seem to like ClariS musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 24,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Abney Park ",
+                "tips": [
+                    {
+                        "algo_id": 46,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Abney Park songs?"
+                    },
+                    {
+                        "algo_id": 47,
+                        "weight": 0.5,
+                        "text": "You seem to like Abney Park musics. What is your favourite?"
+                    },
+                    {
+                        "algo_id": 48,
+                        "weight": 0.3,
+                        "text": "Hey, you like Abney Park. There will be Whitby Gothic Weekendat Whitby Goth Weekend in Whitby. Do you mind going together?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 25,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of наутилус ",
+                "tips": [
+                    {
+                        "algo_id": 49,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like наутилус songs?"
+                    },
+                    {
+                        "algo_id": 50,
+                        "weight": 0.5,
+                        "text": "You seem to like наутилус musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 26,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Пикник ",
+                "tips": [
+                    {
+                        "algo_id": 51,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Пикник songs?"
+                    },
+                    {
+                        "algo_id": 52,
+                        "weight": 0.5,
+                        "text": "You seem to like Пикник musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 27,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Ария ",
+                "tips": [
+                    {
+                        "algo_id": 53,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Ария songs?"
+                    },
+                    {
+                        "algo_id": 54,
+                        "weight": 0.5,
+                        "text": "You seem to like Ария musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 28,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Slipnot ",
+                "tips": [
+                    {
+                        "algo_id": 55,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Slipnot songs?"
+                    },
+                    {
+                        "algo_id": 56,
+                        "weight": 0.5,
+                        "text": "You seem to like Slipnot musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 29,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of O-Zone ",
+                "tips": [
+                    {
+                        "algo_id": 57,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like O-Zone songs?"
+                    },
+                    {
+                        "algo_id": 58,
+                        "weight": 0.5,
+                        "text": "You seem to like O-Zone musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 30,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Чёрный Кофе ",
+                "tips": [
+                    {
+                        "algo_id": 59,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Чёрный Кофе songs?"
+                    },
+                    {
+                        "algo_id": 60,
+                        "weight": 0.5,
+                        "text": "You seem to like Чёрный Кофе musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 31,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of System of a Down ",
+                "tips": [
+                    {
+                        "algo_id": 61,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like System of a Down songs?"
+                    },
+                    {
+                        "algo_id": 62,
+                        "weight": 0.5,
+                        "text": "You seem to like System of a Down musics. What is your favourite?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 32,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Rammstein ",
+                "tips": [
+                    {
+                        "algo_id": 63,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Rammstein songs?"
+                    },
+                    {
+                        "algo_id": 64,
+                        "weight": 0.5,
+                        "text": "You seem to like Rammstein musics. What is your favourite?"
+                    },
+                    {
+                        "algo_id": 65,
+                        "weight": 0.3,
+                        "text": "Hey, you like Rammstein. There will be „Rammstein: Paris“ in cinemas (Portugal)at Portugal. Do you mind going together?"
+                    }
+                ]
+            },
+            {
+                "algo_id": 33,
+                "weight": 0.5,
+                "content_0": null,
+                "description": "Like music of Lordi ",
+                "tips": [
+                    {
+                        "algo_id": 66,
+                        "weight": 0.5,
+                        "text": "You seem to hear music a lot. Do you actually like Lordi songs?"
+                    },
+                    {
+                        "algo_id": 67,
+                        "weight": 0.5,
+                        "text": "You seem to like Lordi musics. What is your favourite?"
+                    }
+                ]
+            }
+        ]
+    }
+]
