@@ -43,7 +43,7 @@ class MeUser(generics.RetrieveAPIView):
 
 
 
-class StartChat(CreateAPIView):
+class StartChat(generics.CreateAPIView):
     permission_classes = (
             permissions.IsAuthenticated,
     )
