@@ -8,6 +8,6 @@ from .category import Category
 from .intersection import Intersection
 from .content import Content
 from .tip import Tip
-from .tools import CategoryType, InputData 
+from .tools import CategoryType, InputData, UpdateInfo, UpdateType 
 
 __all__ = ['chat_room', 'category', 'intersection', 'content', 'tip']

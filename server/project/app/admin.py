@@ -23,5 +23,9 @@ class QueueAdmin(admin.ModelAdmin):
 class UserDataAdmin(admin.ModelAdmin):
     pass
 
+@admin.register(ChatData)
+class ChatDataAdmin(admin.ModelAdmin):
+    pass
+
 
 
