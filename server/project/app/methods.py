@@ -3,7 +3,7 @@ import time
 import json
 import pickle
 from decimal import Decimal
-
+import algo
 import facebook
 facebook.VALID_API_VERSIONS = ['2.8']
 
@@ -41,8 +41,24 @@ def download_data(user):
 
 STOP = False
 
+
+def build_input_data(dataa, datab):
+    res = []
+    res.append(InputData(CategoryType.GENERAL_INFO,
+                        dataa['general'],
+                        datab['general']))
+    return res
+
 def start_chat(chat):
-    pass
+    usera, userb = chat.users.all()[:]
+    dataa = pickle.loads(usera.userdata.data)
+    datab = pickle.loads(userb.userdata.data)
+    chata = algo.ChatRoom(build_input_data(dataa, datab))
+    chatb = algo.ChatRoom(build_input_data(datab, dataa))
+    UserData.objects.create(user=usera, chat=chat,
+            data=pickle.dumps(chata))
+    UserData.objects.create(user=userb, chat=chat,
+            data=pickle.dumps(chatb))
 
 def process_queue_item(job):
     if job.type == 'fetch':
