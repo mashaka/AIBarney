@@ -18,7 +18,14 @@ class AuthController: UIViewController {
         UIHelper.createGradientOnView(view: view)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if AuthHelper.shared.isAuthorized {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func onLogin(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        AuthHelper.shared.loginToFacebook()
     }
 }

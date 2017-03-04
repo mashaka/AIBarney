@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1127D2901E6AF9AF000A2FDB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D28F1E6AF9AF000A2FDB /* API.swift */; };
 		11D641121E6AAA7600CC0A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D641111E6AAA7600CC0A23 /* AppDelegate.swift */; };
 		11D641171E6AAA7600CC0A23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D641151E6AAA7600CC0A23 /* Main.storyboard */; };
 		11D641191E6AAA7600CC0A23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D641181E6AAA7600CC0A23 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		108C0AA898DF0CE235A82450 /* Pods-ChatBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatBot/Pods-ChatBot.release.xcconfig"; sourceTree = "<group>"; };
+		1127D28F1E6AF9AF000A2FDB /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Model/API.swift; sourceTree = "<group>"; };
 		11D6410E1E6AAA7600CC0A23 /* ChatBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11D641111E6AAA7600CC0A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11D641161E6AAA7600CC0A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		11D641251E6AAAAD00CC0A23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1127D28F1E6AF9AF000A2FDB /* API.swift */,
 				11D641511E6ABB6F00CC0A23 /* Helper */,
 				11D641561E6ABC5B00CC0A23 /* User related */,
 				11D641571E6ABC6200CC0A23 /* Chat related */,
@@ -380,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1127D2901E6AF9AF000A2FDB /* API.swift in Sources */,
 				11D641551E6ABC4F00CC0A23 /* UserListModel.swift in Sources */,
 				11D641121E6AAA7600CC0A23 /* AppDelegate.swift in Sources */,
 				11D641291E6AAB8800CC0A23 /* AuthController.swift in Sources */,
@@ -553,6 +557,7 @@
 				11D641221E6AAA7600CC0A23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
