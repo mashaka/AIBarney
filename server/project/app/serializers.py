@@ -14,6 +14,10 @@ class ProfileSerializer(serializers.ModelSerializer):
                     allow_blank=True,
                     source='user.last_name'
                 )
+    id = serializers.SerializerMethodField()
+    def get_id(self, profile):
+        return profile.user.id
+
     class Meta:
         model = Profile
         fields = ('id', 'first_name', 'last_name',
@@ -36,7 +40,7 @@ class ChatSerializer(serializers.ModelSerializer):
             return None
         else:
             return (MessageSerializer(**{'context': self.context}).
-                to_representation())
+                to_representation(message))
 
     class Meta:
         model = Chat
@@ -47,8 +51,10 @@ class UserListSerializer(ProfileSerializer):
     chat = serializers.SerializerMethodField()
 
     def get_chat_ins(self, profile):
-        return Chat.objects.filter(users__in=[ profile,
-                self.context['request'].user.profile]).first()
+        return Chat.objects.filter(
+                users=self.
+                    context['request'].user.profile).filter(
+                            users=profile).first()
 
     def get_chat(self, profile):
         chat = self.get_chat_ins(profile)
@@ -65,5 +71,4 @@ class UserListSerializer(ProfileSerializer):
         model = Profile
         fields = ('id', 'first_name', 'last_name',
                   'avatar_url', 'has_chat', 'chat')
-
 
