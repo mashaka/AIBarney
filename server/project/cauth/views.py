@@ -17,7 +17,7 @@ def get_token(request):
         user = request.user
         prepare_user(user)
         token,_ = Token.objects.get_or_create(user=user)
-        url = "chatbot://?token=" + token.key + '&id=' + user.id
+        url = "chatbot://?token=" + token.key + '&id=' + str(user.id)
     else:
         url = "chatbot://error"
     response = HttpResponse(url, status=302)
