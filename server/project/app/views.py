@@ -49,7 +49,6 @@ class StartChat(CreateAPIView):
     )
 
     def perform_create(self, serializer):
-
         user = get_object_or_404(User, id=self.kwargs['user_id'])
         profile = self.request.user.profile
         instance = serializer.save()
