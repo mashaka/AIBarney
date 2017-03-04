@@ -7,6 +7,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
 
+from pubnub.enums import PNStatusCategory
+from pubnub.pnconfiguration import PNConfiguration
+from pubnub.pubnub import PubNub, SubscribeListener
+ 
+pnconfig = PNConfiguration()
+pnconfig.publish_key = 'pub-c-8465dadc-3bc2-40be-a68d-16110286f809'
+pnconfig.subscribe_key = 'sub-c-51962ec8-0100-11e7-8437-0619f8945a4f'
+pubnub = PubNub(pnconfig)
+ 
 
 class MessageList(generics.ListCreateAPIView):
     serializer_class = MessageSerializer
@@ -18,6 +27,10 @@ class MessageList(generics.ListCreateAPIView):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
         instance = serializer.save(author=profile, chat=chat)
+        user_to = [p.user.id for p in chat.users if p != profile][0]
+        channel = str(user_to) + '_' + str(chat.id)
+        msg = serializer.to_representation()
+        pubnub.publish().channel(channel).message(msg).sync()
 
     def get_queryset(self):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
