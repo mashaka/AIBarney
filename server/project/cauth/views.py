@@ -14,7 +14,7 @@ from rest_framework.authtoken.models import Token
 def get_token(request):
     response = HttpResponse("", status=302)
     if request.user:
-        token = Token.objects.create(user=request.user)
+        token = Token.objects.get_or_create(user=request.user)
         response['Location'] = "chatbot://token=" + token.key
     else:
         response['Location'] = "chatbot://error"
