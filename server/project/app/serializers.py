@@ -40,7 +40,7 @@ class ChatSerializer(serializers.ModelSerializer):
             return None
         else:
             return (MessageSerializer(**{'context': self.context}).
-                to_representation())
+                to_representation(message))
 
     class Meta:
         model = Chat
