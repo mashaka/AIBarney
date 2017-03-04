@@ -44,6 +44,7 @@ class MeUser(generics.RetrieveAPIView):
 
 
 class StartChat(generics.CreateAPIView):
+    serializer_class = ChatSerializer
     permission_classes = (
             permissions.IsAuthenticated,
     )
