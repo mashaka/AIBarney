@@ -10,7 +10,7 @@ class Profile(models.Model):
 
 class UserData(models.Model):
     user = models.OneToOneField(User)
-    data = models.TextField()
+    data = models.BinaryField()
 
     def __str__(self):
         return 'UserData ' + str(self.user.id)
