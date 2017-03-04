@@ -9,13 +9,16 @@ from django.shortcuts import render, redirect
 from social_django.models import UserSocialAuth
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
-
+from rest_framework.authtoken.models import Token
 
 def get_token(request):
+    response = HttpResponse("", status=302)
     if request.user:
-        return redirect('chatbot://token=') 
+        token = Token.objects.create(user=request.user)
+        response['Location'] = "chatbot://token=" + token.key
     else:
-        return redirect('chatbot://error') 
+        response['Location'] = "chatbot://error"
+    return response
 
 @login_required
 def get_facebook_token(request):
