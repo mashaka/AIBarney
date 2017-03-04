@@ -27,7 +27,7 @@ class MessageList(generics.ListCreateAPIView):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
         instance = serializer.save(author=profile, chat=chat)
-        user_to = [p.user.id for p in chat.users if p != profile][0]
+        user_to = [p.user.id for p in chat.users.all() if p != profile][0]
         channel = str(user_to) + '_' + str(chat.id)
         msg = serializer.to_representation()
         pubnub.publish().channel(channel).message(msg).sync()
