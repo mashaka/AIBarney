@@ -36,6 +36,6 @@ class MeUser(generics.ListAPIView):
             permissions.IsAuthenticated,
     )
 
-    def get_queryset(self):
+    def get_object(self):
         return self.request.user.profile
 
