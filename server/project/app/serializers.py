@@ -14,6 +14,10 @@ class ProfileSerializer(serializers.ModelSerializer):
                     allow_blank=True,
                     source='user.last_name'
                 )
+    id = serializers.SerializerMethodField()
+    def get_id(self, profile):
+        return profile.user.id
+
     class Meta:
         model = Profile
         fields = ('id', 'first_name', 'last_name',
