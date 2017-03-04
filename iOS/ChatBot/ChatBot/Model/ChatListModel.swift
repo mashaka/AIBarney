@@ -9,5 +9,13 @@
 import Foundation
 
 struct ChatListModel {
+    var sections: [[Any]] = []
     
+    mutating func loadModel() {
+        sections = [createRecentChatsSection()]
+    }
+    
+    func createRecentChatsSection() -> [Chat] {
+        return []
+    }
 }

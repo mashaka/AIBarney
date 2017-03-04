@@ -19,12 +19,6 @@ class AuthController: UIViewController {
     }
     
     @IBAction func onLogin(_ sender: Any) {
-        performSegue(withIdentifier: "toChats", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toChats" {
-            
-        }
+        dismiss(animated: true, completion: nil)
     }
 }
