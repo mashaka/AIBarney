@@ -8,11 +8,12 @@ from django.shortcuts import render, redirect
 
 from social_django.models import UserSocialAuth
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 
 @login_required
 def get_facebook_token(request):
-    q=UserSocialAuth.objects.filter(user=request.user,provider='facebook')
+    q=get_object_or_404(UserSocialAuth,user=request.user,provider='facebook')
     return HttpResponse(str(q.extra_data))
 
 def signup(request):
