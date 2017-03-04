@@ -50,7 +50,7 @@ class UserListSerializer(ProfileSerializer):
                 self.context['request'].user.profile])))
 
     def get_chat(self, profile):        
-        return ChatSe
+        return False
 
     class Meta:
         model = Profile
