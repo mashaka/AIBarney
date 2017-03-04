@@ -116,14 +116,16 @@ class MusicProccessor:
             firstName = firstElement["name"]
             secondName = secondElement["name"]
 
-            text = "Looks like you are listening to " + genre + " music. I also do. Have you heard about " \
-                + secondName + "?"
+            if firstName != secondName:
 
-            intersections.append( Intersection( "Like music of " + genre + ": " + firstName + ", " + secondName, 
-                    suggestCommonGenreWeight, ( 
-                    Content( ContentType.IMAGE_URL, firstUrl ), 
-                    Content( ContentType.IMAGE_URL, secondUrl ) ), 
-                    [ Tip( text, 1.0 ) ] ) )
+                text = "Looks like you are listening to " + genre + " music. I also do. Have you heard about " \
+                    + secondName + "?"
+
+                intersections.append( Intersection( "Like music of " + genre + ": " + firstName + ", " + secondName, 
+                        suggestCommonGenreWeight, ( 
+                        Content( ContentType.IMAGE_URL, firstUrl ), 
+                        Content( ContentType.IMAGE_URL, secondUrl ) ), 
+                        [ Tip( text, 1.0 ) ] ) )
 
         return intersections
 
