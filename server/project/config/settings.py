@@ -202,6 +202,6 @@ REST_FRAMEWORK = {
 SWAGGER_SETTINGS = {
         'base_path': 'ryadom.me/docs',
         'is_authenticated': True,
-        'api_path': 'http://ryadom.me/',
+        'api_path': 'http://ryadom.me/api/',
 }
 
