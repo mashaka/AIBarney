@@ -11,6 +11,31 @@
 		11D641171E6AAA7600CC0A23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D641151E6AAA7600CC0A23 /* Main.storyboard */; };
 		11D641191E6AAA7600CC0A23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D641181E6AAA7600CC0A23 /* Assets.xcassets */; };
 		11D6411C1E6AAA7600CC0A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D6411A1E6AAA7600CC0A23 /* LaunchScreen.storyboard */; };
+		11D641291E6AAB8800CC0A23 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D641281E6AAB8800CC0A23 /* AuthController.swift */; };
+		11D6412B1E6AAE9700CC0A23 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6412A1E6AAE9700CC0A23 /* UIHelper.swift */; };
+		11D641371E6AB1DB00CC0A23 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D6412D1E6AB1DB00CC0A23 /* Lato-Black.ttf */; };
+		11D641381E6AB1DB00CC0A23 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D6412E1E6AB1DB00CC0A23 /* Lato-BlackItalic.ttf */; };
+		11D641391E6AB1DB00CC0A23 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D6412F1E6AB1DB00CC0A23 /* Lato-Bold.ttf */; };
+		11D6413A1E6AB1DB00CC0A23 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641301E6AB1DB00CC0A23 /* Lato-BoldItalic.ttf */; };
+		11D6413B1E6AB1DB00CC0A23 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641311E6AB1DB00CC0A23 /* Lato-Hairline.ttf */; };
+		11D6413C1E6AB1DB00CC0A23 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641321E6AB1DB00CC0A23 /* Lato-HairlineItalic.ttf */; };
+		11D6413D1E6AB1DB00CC0A23 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641331E6AB1DB00CC0A23 /* Lato-Italic.ttf */; };
+		11D6413E1E6AB1DB00CC0A23 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641341E6AB1DB00CC0A23 /* Lato-Light.ttf */; };
+		11D6413F1E6AB1DB00CC0A23 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641351E6AB1DB00CC0A23 /* Lato-LightItalic.ttf */; };
+		11D641401E6AB1DB00CC0A23 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641361E6AB1DB00CC0A23 /* Lato-Regular.ttf */; };
+		11D641491E6AB2E000CC0A23 /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641411E6AB2E000CC0A23 /* Lato-Heavy.ttf */; };
+		11D6414A1E6AB2E000CC0A23 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641421E6AB2E000CC0A23 /* Lato-HeavyItalic.ttf */; };
+		11D6414B1E6AB2E000CC0A23 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641431E6AB2E000CC0A23 /* Lato-Medium.ttf */; };
+		11D6414C1E6AB2E000CC0A23 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641441E6AB2E000CC0A23 /* Lato-MediumItalic.ttf */; };
+		11D6414D1E6AB2E000CC0A23 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641451E6AB2E000CC0A23 /* Lato-Semibold.ttf */; };
+		11D6414E1E6AB2E000CC0A23 /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641461E6AB2E000CC0A23 /* Lato-SemiboldItalic.ttf */; };
+		11D6414F1E6AB2E000CC0A23 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641471E6AB2E000CC0A23 /* Lato-Thin.ttf */; };
+		11D641501E6AB2E000CC0A23 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D641481E6AB2E000CC0A23 /* Lato-ThinItalic.ttf */; };
+		11D641531E6ABB8800CC0A23 /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D641521E6ABB8800CC0A23 /* ChatListModel.swift */; };
+		11D641551E6ABC4F00CC0A23 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D641541E6ABC4F00CC0A23 /* UserListModel.swift */; };
+		11D641591E6ABC7900CC0A23 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D641581E6ABC7900CC0A23 /* UserModel.swift */; };
+		11D6415B1E6ABEE500CC0A23 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6415A1E6ABEE500CC0A23 /* ChatListController.swift */; };
+		11D6415D1E6ABFAD00CC0A23 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6415C1E6ABFAD00CC0A23 /* ChatModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +45,31 @@
 		11D641181E6AAA7600CC0A23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11D6411B1E6AAA7600CC0A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11D6411D1E6AAA7600CC0A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11D641281E6AAB8800CC0A23 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthController.swift; path = Controller/AuthController.swift; sourceTree = "<group>"; };
+		11D6412A1E6AAE9700CC0A23 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIHelper.swift; path = Helpers/UIHelper.swift; sourceTree = "<group>"; };
+		11D6412D1E6AB1DB00CC0A23 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		11D6412E1E6AB1DB00CC0A23 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		11D6412F1E6AB1DB00CC0A23 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		11D641301E6AB1DB00CC0A23 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		11D641311E6AB1DB00CC0A23 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		11D641321E6AB1DB00CC0A23 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
+		11D641331E6AB1DB00CC0A23 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		11D641341E6AB1DB00CC0A23 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		11D641351E6AB1DB00CC0A23 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		11D641361E6AB1DB00CC0A23 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		11D641411E6AB2E000CC0A23 /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
+		11D641421E6AB2E000CC0A23 /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
+		11D641431E6AB2E000CC0A23 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		11D641441E6AB2E000CC0A23 /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
+		11D641451E6AB2E000CC0A23 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		11D641461E6AB2E000CC0A23 /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		11D641471E6AB2E000CC0A23 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		11D641481E6AB2E000CC0A23 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		11D641521E6ABB8800CC0A23 /* ChatListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatListModel.swift; path = Model/ChatListModel.swift; sourceTree = "<group>"; };
+		11D641541E6ABC4F00CC0A23 /* UserListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserListModel.swift; path = Model/UserListModel.swift; sourceTree = "<group>"; };
+		11D641581E6ABC7900CC0A23 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = Model/UserModel.swift; sourceTree = "<group>"; };
+		11D6415A1E6ABEE500CC0A23 /* ChatListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatListController.swift; path = Controller/ChatListController.swift; sourceTree = "<group>"; };
+		11D6415C1E6ABFAD00CC0A23 /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatModel.swift; path = Model/ChatModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +124,7 @@
 		11D641241E6AAA9D00CC0A23 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11D6412C1E6AB1BD00CC0A23 /* Font */,
 				11D641181E6AAA7600CC0A23 /* Assets.xcassets */,
 				11D6411D1E6AAA7600CC0A23 /* Info.plist */,
 			);
@@ -83,6 +134,9 @@
 		11D641251E6AAAAD00CC0A23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11D641511E6ABB6F00CC0A23 /* Helper */,
+				11D641561E6ABC5B00CC0A23 /* User related */,
+				11D641571E6ABC6200CC0A23 /* Chat related */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -97,8 +151,61 @@
 		11D641271E6AAABE00CC0A23 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				11D641281E6AAB8800CC0A23 /* AuthController.swift */,
+				11D6415A1E6ABEE500CC0A23 /* ChatListController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		11D6412C1E6AB1BD00CC0A23 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				11D641411E6AB2E000CC0A23 /* Lato-Heavy.ttf */,
+				11D641421E6AB2E000CC0A23 /* Lato-HeavyItalic.ttf */,
+				11D641431E6AB2E000CC0A23 /* Lato-Medium.ttf */,
+				11D641441E6AB2E000CC0A23 /* Lato-MediumItalic.ttf */,
+				11D641451E6AB2E000CC0A23 /* Lato-Semibold.ttf */,
+				11D641461E6AB2E000CC0A23 /* Lato-SemiboldItalic.ttf */,
+				11D641471E6AB2E000CC0A23 /* Lato-Thin.ttf */,
+				11D641481E6AB2E000CC0A23 /* Lato-ThinItalic.ttf */,
+				11D6412D1E6AB1DB00CC0A23 /* Lato-Black.ttf */,
+				11D6412E1E6AB1DB00CC0A23 /* Lato-BlackItalic.ttf */,
+				11D6412F1E6AB1DB00CC0A23 /* Lato-Bold.ttf */,
+				11D641301E6AB1DB00CC0A23 /* Lato-BoldItalic.ttf */,
+				11D641311E6AB1DB00CC0A23 /* Lato-Hairline.ttf */,
+				11D641321E6AB1DB00CC0A23 /* Lato-HairlineItalic.ttf */,
+				11D641331E6AB1DB00CC0A23 /* Lato-Italic.ttf */,
+				11D641341E6AB1DB00CC0A23 /* Lato-Light.ttf */,
+				11D641351E6AB1DB00CC0A23 /* Lato-LightItalic.ttf */,
+				11D641361E6AB1DB00CC0A23 /* Lato-Regular.ttf */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
+		11D641511E6ABB6F00CC0A23 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				11D6412A1E6AAE9700CC0A23 /* UIHelper.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		11D641561E6ABC5B00CC0A23 /* User related */ = {
+			isa = PBXGroup;
+			children = (
+				11D641581E6ABC7900CC0A23 /* UserModel.swift */,
+				11D641541E6ABC4F00CC0A23 /* UserListModel.swift */,
+			);
+			name = "User related";
+			sourceTree = "<group>";
+		};
+		11D641571E6ABC6200CC0A23 /* Chat related */ = {
+			isa = PBXGroup;
+			children = (
+				11D6415C1E6ABFAD00CC0A23 /* ChatModel.swift */,
+				11D641521E6ABB8800CC0A23 /* ChatListModel.swift */,
+			);
+			name = "Chat related";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,8 +268,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D641491E6AB2E000CC0A23 /* Lato-Heavy.ttf in Resources */,
+				11D641501E6AB2E000CC0A23 /* Lato-ThinItalic.ttf in Resources */,
+				11D6413D1E6AB1DB00CC0A23 /* Lato-Italic.ttf in Resources */,
+				11D641371E6AB1DB00CC0A23 /* Lato-Black.ttf in Resources */,
+				11D641391E6AB1DB00CC0A23 /* Lato-Bold.ttf in Resources */,
+				11D6413E1E6AB1DB00CC0A23 /* Lato-Light.ttf in Resources */,
 				11D6411C1E6AAA7600CC0A23 /* LaunchScreen.storyboard in Resources */,
+				11D6414E1E6AB2E000CC0A23 /* Lato-SemiboldItalic.ttf in Resources */,
+				11D6414C1E6AB2E000CC0A23 /* Lato-MediumItalic.ttf in Resources */,
+				11D641381E6AB1DB00CC0A23 /* Lato-BlackItalic.ttf in Resources */,
 				11D641191E6AAA7600CC0A23 /* Assets.xcassets in Resources */,
+				11D6413F1E6AB1DB00CC0A23 /* Lato-LightItalic.ttf in Resources */,
+				11D6414B1E6AB2E000CC0A23 /* Lato-Medium.ttf in Resources */,
+				11D6414D1E6AB2E000CC0A23 /* Lato-Semibold.ttf in Resources */,
+				11D6413C1E6AB1DB00CC0A23 /* Lato-HairlineItalic.ttf in Resources */,
+				11D6414A1E6AB2E000CC0A23 /* Lato-HeavyItalic.ttf in Resources */,
+				11D6413A1E6AB1DB00CC0A23 /* Lato-BoldItalic.ttf in Resources */,
+				11D641401E6AB1DB00CC0A23 /* Lato-Regular.ttf in Resources */,
+				11D6414F1E6AB2E000CC0A23 /* Lato-Thin.ttf in Resources */,
+				11D6413B1E6AB1DB00CC0A23 /* Lato-Hairline.ttf in Resources */,
 				11D641171E6AAA7600CC0A23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,7 +299,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D641551E6ABC4F00CC0A23 /* UserListModel.swift in Sources */,
 				11D641121E6AAA7600CC0A23 /* AppDelegate.swift in Sources */,
+				11D641291E6AAB8800CC0A23 /* AuthController.swift in Sources */,
+				11D6415D1E6ABFAD00CC0A23 /* ChatModel.swift in Sources */,
+				11D6412B1E6AAE9700CC0A23 /* UIHelper.swift in Sources */,
+				11D6415B1E6ABEE500CC0A23 /* ChatListController.swift in Sources */,
+				11D641591E6ABC7900CC0A23 /* UserModel.swift in Sources */,
+				11D641531E6ABB8800CC0A23 /* ChatListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
