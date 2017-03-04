@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-
+from rest_framework.renderers import JSONRenderer
 from pubnub.enums import PNStatusCategory
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.pubnub import PubNub, SubscribeListener
@@ -29,9 +29,8 @@ class MessageList(generics.ListCreateAPIView):
         instance = serializer.save(author=profile, chat=chat)
         user_to = [p.user.id for p in chat.users.all() if p.id != profile.id][0]
         channel = str(user_to) + '_' + str(chat.id)
-        msg = serializer.to_representation(instance)
-        print(channel)
-        print(msg)
+        renderer = JSONRenderer()
+        msg = renderer.render(serializer.to_representation(instance))
         pubnub.publish().channel(channel).message(msg).sync()
 
     def get_queryset(self):
