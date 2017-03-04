@@ -51,8 +51,8 @@ def build_input_data(dataa, datab):
 
 def start_chat(chat):
     usera, userb = chat.users.all()[:]
-    dataa = pickle.loads(usera.userdata.data)
-    datab = pickle.loads(userb.userdata.data)
+    dataa = pickle.loads(usera.user.userdata.data)
+    datab = pickle.loads(userb.user.userdata.data)
     chata = algo.ChatRoom(build_input_data(dataa, datab))
     chatb = algo.ChatRoom(build_input_data(datab, dataa))
     UserData.objects.create(user=usera, chat=chat,
