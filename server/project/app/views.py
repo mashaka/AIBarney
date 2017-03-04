@@ -21,9 +21,11 @@ class MessageList(generics.ListCreateAPIView):
 
 class UserList(generics.ListAPIView):
     serializer_class = UserListSerializer
-    queryset = Profile.objects.all()
 
     permission_classes = (
             permissions.IsAuthenticated,
     )
+
+    def get_queryset(self):
+        return Profile.objects.exclude(user=self.request.user)
 
