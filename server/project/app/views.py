@@ -43,7 +43,7 @@ class MeUser(generics.RetrieveAPIView):
 
 
 class StartChat(APIView):
-    def post(self, request, format=None):
-        print(request.kwargs['user_id'])
+    def post(self, request, user_id, format=None):
+        print(user_id)
         return Response()
 
