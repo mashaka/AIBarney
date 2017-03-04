@@ -44,20 +44,20 @@ STOP = False
 
 def build_input_data(dataa, datab):
     res = []
-    res.append(InputData(CategoryType.GENERAL_INFO,
+    res.append(algo.InputData(algo.CategoryType.GENERAL_INFO,
                         dataa['general'],
                         datab['general']))
     return res
 
 def start_chat(chat):
     usera, userb = chat.users.all()[:]
-    dataa = pickle.loads(usera.userdata.data)
-    datab = pickle.loads(userb.userdata.data)
+    dataa = pickle.loads(usera.user.userdata.data)
+    datab = pickle.loads(userb.user.userdata.data)
     chata = algo.ChatRoom(build_input_data(dataa, datab))
     chatb = algo.ChatRoom(build_input_data(datab, dataa))
-    UserData.objects.create(user=usera, chat=chat,
+    ChatData.objects.create(user=usera.user, chat=chat,
             data=pickle.dumps(chata))
-    UserData.objects.create(user=userb, chat=chat,
+    ChatData.objects.create(user=userb.user, chat=chat,
             data=pickle.dumps(chatb))
 
 def process_queue_item(job):
