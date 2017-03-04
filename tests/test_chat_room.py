@@ -14,12 +14,11 @@ class ChatRoomTestSuite(unittest.TestCase):
     """ Tests for ChatRoom class """
 
     def setUp(self):
-        input_data = (dict(), dict())
+        self.input_data = (dict(), dict())
         for i in range(2):
             for name, member in CategoryType.__members__.items():
-                input_data[i][member] = InputData(type, None)
-        self.chat_room = ChatRoom(input_data)
+                self.input_data[i][member] = InputData(type, None)
 
-    def test_sasha_posts_internal(self):
-        pass
-        
+    def test_set_up(self):
+        self.chat_room = ChatRoom(self.input_data)
+    

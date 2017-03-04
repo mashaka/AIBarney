@@ -6,6 +6,8 @@
 from typing import Tuple
 from enum import Enum, unique
 
+from .general_info import GeneralInfo
+
 NOT_FOUND = -1
 
 @unique
@@ -17,6 +19,8 @@ class CategoryType(Enum):
     TRIPS = 5
     GROUPS = 6
     HASHTAGS = 7
+    FRIENDS = 8
+    SPORT = 9
 
     
 class InputData:
@@ -40,7 +44,7 @@ class Category:
         self.type = data[0].type
         if self.type == CategoryType.GENERAL_INFO:
             # TODO
-            self.intersections = []
+            self.intersections = GeneralInfo((data[0].data, data[1].data)).process()
         elif self.type == CategoryType.MUSIC:
             # TODO
             self.intersections = []
@@ -56,6 +60,12 @@ class Category:
             # TODO
             self.intersections = []
         elif self.type == CategoryType.HASHTAGS:
+            # TODO
+            self.intersections = []
+        elif self.type == CategoryType.FRIENDS:
+            # TODO
+            self.intersections = []
+        elif self.type == CategoryType.SPORT:
             # TODO
             self.intersections = []
         # TODO: compute intersection weights
