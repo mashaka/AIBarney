@@ -49,7 +49,7 @@ class UserListSerializer(ProfileSerializer):
 
     def get_has_chat(self, profile):
         return (ChatSerializer(**{'context': self.context}).
-                to_representation(get_chat_ins(self, profile)))
+                to_representation(self.get_chat_ins(profile)))
 
     def get_chat(self, profile):        
         return False
