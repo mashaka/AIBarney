@@ -8,8 +8,14 @@ from django.shortcuts import render, redirect
 
 from social_django.models import UserSocialAuth
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
+
+def get_token(request):
+    if request.user:
+        return redirect('chatbot://token=') 
+    else:
+        return redirect('chatbot://error') 
 
 @login_required
 def get_facebook_token(request):
@@ -17,19 +23,7 @@ def get_facebook_token(request):
     return HttpResponse(str(q.extra_data))
 
 def signup(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = authenticate(
-                username=form.cleaned_data.get('username'),
-                password=form.cleaned_data.get('password1')
-            )
-            login(request, user)
-            return redirect('home')
-    else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'signup.html')
 
 @login_required
 def home(request):
@@ -55,8 +49,6 @@ def settings(request):
     can_disconnect = (user.social_auth.count() > 1 or user.has_usable_password())
 
     return render(request, 'settings.html', {
-        'github_login': github_login,
-        'twitter_login': twitter_login,
         'facebook_login': facebook_login,
         'can_disconnect': can_disconnect
     })
