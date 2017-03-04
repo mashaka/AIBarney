@@ -47,12 +47,16 @@ class UserListSerializer(ProfileSerializer):
         return Chat.objects.filter(users__in=[ profile,
                 self.context['request'].user.profile]).first()
 
-    def get_has_chat(self, profile):
-        return (ChatSerializer(**{'context': self.context}).
-                to_representation(self.get_chat_ins(profile)))
+    def get_chat(self, profile):
+        chat = self.get_chat_ins(profile)
+        if chat is None:
+            return None
+        else:
+            return (ChatSerializer(**{'context': self.context}).
+                to_representation(chat))
 
-    def get_chat(self, profile):        
-        return False
+    def get_has_chat(self, profile):
+        return self.get_chat_ins(profile) == None
 
     class Meta:
         model = Profile
