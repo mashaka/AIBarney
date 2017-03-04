@@ -7,6 +7,9 @@ from typing import Tuple, Dict
 import logging
 
 from .general_info import GeneralInfo
+from .music_processor import MusicProccessor
+from .movie_processor import MovieProccessor
+from .book_processor import BookProccessor
 from .tools import UpdateInfo, InputData, DataNLP, CategoryType
 
 NOT_FOUND = -1
@@ -23,13 +26,11 @@ class Category:
         if self.type is CategoryType.GENERAL_INFO:
             self.processor = GeneralInfo((data.data_0, data.data_1))
         elif self.type is CategoryType.MUSIC:
-            # TODO
-            pass
+            self.processor = MusicProccessor( data.data_0, data.data_1 )
         elif self.type is CategoryType.BOOKS:
-            # TODO
-            pass
+            self.processor = BookProccessors( data.data_0, data.data_1 )
         elif self.type is CategoryType.MOVIES:
-            # TODO
+            self.processor = MovieProccessor( data.data_0, data.data_1 )
             pass
         elif self.type is CategoryType.TRIPS:
             # TODO

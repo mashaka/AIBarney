@@ -21,7 +21,7 @@ suggestCommonGenreWeight = 0.3
 
 class MovieProccessor:
 
-    def __init__( firstDataList: List[Dict], secondDataList: List[Dict] ):
+    def __init__( self, firstDataList: List[Dict], secondDataList: List[Dict] ):
         firstIds = set( map( lambda x: x["id"], firstDataList ) )
         secondIds = set( map( lambda x: x["id"], secondDataList ) )
         firstGenres = set( map( lambda x: x["genre"], firstDataList) )
