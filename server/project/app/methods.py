@@ -55,9 +55,9 @@ def start_chat(chat):
     datab = pickle.loads(userb.user.userdata.data)
     chata = algo.ChatRoom(build_input_data(dataa, datab))
     chatb = algo.ChatRoom(build_input_data(datab, dataa))
-    UserData.objects.create(user=usera.user, chat=chat,
+    ChatData.objects.create(user=usera.user, chat=chat,
             data=pickle.dumps(chata))
-    UserData.objects.create(user=userb.user, chat=chat,
+    ChatData.objects.create(user=userb.user, chat=chat,
             data=pickle.dumps(chatb))
 
 def process_queue_item(job):
