@@ -7,10 +7,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
 
-from pubnub.enums import PNStatusCategory
 from pubnub.pnconfiguration import PNConfiguration
-from pubnub.pubnub import PubNub, SubscribeListener
- 
+from pubnub.pubnub import PubNub
+import pickle
+
 pnconfig = PNConfiguration()
 pnconfig.publish_key = 'pub-c-8465dadc-3bc2-40be-a68d-16110286f809'
 pnconfig.subscribe_key = 'sub-c-51962ec8-0100-11e7-8437-0619f8945a4f'
@@ -80,3 +80,11 @@ class StartChat(generics.CreateAPIView):
         else:
             raise Http404()
 
+
+class ChatTips(APIView):
+    def get(self, request, chat_id, format=None):
+        chat = get_object_or_404(Chat, id=chat_id)
+        room = pickle.loads(get_object_or_404(ChatData,
+                            chat=chat, user=request.user).data)
+        tips = room.get_tips()
+        return Response(tips)
