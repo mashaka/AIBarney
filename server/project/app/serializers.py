@@ -44,10 +44,13 @@ class UserListSerializer(ProfileSerializer):
     chat = serializers.SerializerMethodField()
 
     def get_has_chat(self, profile):
-        return False
+        return (ChatSerializer(**{'context': self.context}).
+                to_representation(Chat.objects.filter(
+            users__contains=self.context.request.user)))
 
-    def get_chat(self, profile):
-        return None
+    def get_chat(self, profile):        
+        return ChatSe
+
     class Meta:
         model = Profile
         fields = ('id', 'first_name', 'last_name',
