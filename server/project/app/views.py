@@ -29,7 +29,7 @@ class MessageList(generics.ListCreateAPIView):
         instance = serializer.save(author=profile, chat=chat)
         user_to = [p.user.id for p in chat.users.all() if p != profile][0]
         channel = str(user_to) + '_' + str(chat.id)
-        msg = serializer.to_representation()
+        msg = serializer.to_representation(instance)
         pubnub.publish().channel(channel).message(msg).sync()
 
     def get_queryset(self):
