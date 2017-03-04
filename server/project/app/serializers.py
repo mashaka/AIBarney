@@ -44,6 +44,7 @@ class UserListSerializer(ProfileSerializer):
     chat = serializers.SerializerMethodField()
 
     def get_has_chat(self, profile):
+        print(dir(self))
         return (ChatSerializer(**{'context': self.context}).
                 to_representation(Chat.objects.filter(
             users__contains=self.context.request.user)))
