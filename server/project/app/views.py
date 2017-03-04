@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 class MessageList(generics.ListCreateAPIView):
     serializer_class = MessageSerializer
     permission_classes = (
-            permissions.IsAuthenticated
+            permissions.IsAuthenticated,
     )
 
     def perform_create(self, serializer):
