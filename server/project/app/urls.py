@@ -4,4 +4,5 @@ from . import views
 
 urlpatterns = [
     url(r'^chat/(?P<chat_id>[0-9]+)/messages/$', views.MessageList.as_view(), name='message_list'),
+    url(r'^users/$', views.UserListList.as_view(), name='user_list'),
 ]
