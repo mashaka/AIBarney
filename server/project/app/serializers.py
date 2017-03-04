@@ -43,11 +43,13 @@ class UserListSerializer(ProfileSerializer):
     has_chat = serializers.SerializerMethodField()
     chat = serializers.SerializerMethodField()
 
+    def get_chat_ins(self, profile):
+        return Chat.objects.filter(users__in=[ profile,
+                self.context['request'].user.profile]).first()
+
     def get_has_chat(self, profile):
         return (ChatSerializer(**{'context': self.context}).
-                to_representation(Chat.objects.filter(
-            users__in=[ profile,
-                self.context['request'].user.profile])))
+                to_representation(get_chat_ins(self, profile)))
 
     def get_chat(self, profile):        
         return False
