@@ -50,7 +50,7 @@ class UserListSerializer(ProfileSerializer):
         return Chat.objects.filter(
                 users=self.
                     context['request'].user.profile).filter(
-                            user=profile).first()
+                            users=profile).first()
 
     def get_chat(self, profile):
         chat = self.get_chat_ins(profile)
@@ -67,5 +67,4 @@ class UserListSerializer(ProfileSerializer):
         model = Profile
         fields = ('id', 'first_name', 'last_name',
                   'avatar_url', 'has_chat', 'chat')
-
 
