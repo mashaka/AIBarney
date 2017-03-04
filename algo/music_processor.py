@@ -2,6 +2,7 @@ from typing import List, Dict
 from .intersection import Intersection
 from .tip import Tip
 import random
+from datetime import datetime
 
 def performerTipString( data, tipBegin, tipEnd ):
     performerName = data["name"]
@@ -14,8 +15,21 @@ def getCoverUrl( data ):
         pictureUrl = data["cover"]["source"]
     return pictureUrl
 
+def getNearestEvent( data ):
+    events = data["events"]["data"]
+    now = dateteime.now()
+    if not events:
+        return None
+    for i in range( len(events) - 1, 0, -1 ):
+        event = events[i]
+        start = datetime.strptime( event["start_time"][-5], '%Y-%m-%dT%H:%M:%S' )
+        if start > now:
+            return event
+
+    return None    
+
 MINIMAL_MUSIC_LIKES = 50
-abusiveLoveToMusicsDefaultWeight = 0.1
+abusiveLoveToMoviesDefaultWeight = 0.1
 suggestCommonArtistWeight = 0.5
 suggestCommonGenreWeight = 0.3
 
@@ -34,7 +48,7 @@ class MusicProccessor:
 
         self.genreToPerformersLists = dict()
         for genre in intersectionGenres:
-            self.genreToPerformersLists["genre"] = [[], []]
+            self.genreToPerformersLists[genre] = [[], []]
 
         for data in firstDataList:
             if data["id"] in intersectionIds:
@@ -66,9 +80,22 @@ class MusicProccessor:
             askAboutFavouritePerformerSongTip = performerTipString( data, 
                 "You seem to like", "mucics. What is your favourite?") )
 
-            intersections.append( Intersection( performerTipString( data, "Like music of", "" ), 
-                suggestCommonArtistWeight, [pictureUrl, None], [ 
-                confirmMutiallyLikingPerformerTip, askAboutFavouritePerformerSongTip ] ) )
+            event = findNearestEvent( data )
+            
+            if event:
+                goToEventSuggesion = "Hey, you like " + data["name"] \
+                    + ". There will be " + event["name"] + "at " + event["place"]["name"] + " in " \
+                    + event["place"]["location"]["city"] + ". Do you mind going together?"
+
+                intersections.append( Intersection( performerTipString( data, "Like music of", "" ), 
+                    suggestCommonArtistWeight, [pictureUrl, None], [ 
+                    Tip( confirmMutiallyLikingPerformerTip, 0.5 ), Tip( askAboutFavouritePerformerSongTip, 0.5 ),
+                    Tip( goToEventSuggesion, 0.3)
+                     ] ) )
+            else:
+                intersections.append( Intersection( performerTipString( data, "Like music of", "" ), 
+                    suggestCommonArtistWeight, [pictureUrl, None], [ 
+                    Tip( confirmMutiallyLikingPerformerTip, 0.5 ), Tip( askAboutFavouritePerformerSongTip, 0.5 ) ] ) )
 
         for genre, performersPair in self.genreToPerformersLists:
             firstList = performersPair[0]
