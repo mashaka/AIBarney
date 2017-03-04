@@ -92,8 +92,8 @@ class MusicProccessor:
                     loc = " in " + event["place"]["location"]["country"]
 
                 goToEventSuggesion = "Hey, you like " + data["name"] \
-                    + ". There will be " + event["name"] + "at " + event["place"]["name"] \
-                    + loc + "." +  + " Do you mind going together?" 
+                    + ". There will be " + event["name"] + "at " + event["place"]["name"]\
+                    + loc + "." + " Do you mind going together?" 
 
                 intersections.append( Intersection( performerTipString( data, "Like music of", "" ), 
                     suggestCommonArtistWeight, ( Content( ContentType.IMAGE_URL, pictureUrl ), None), [ 

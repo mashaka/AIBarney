@@ -1,0 +1,153 @@
+[
+    {
+        "weight": -1,
+        "intersections": [
+            {
+                "weight": 0.5,
+                "content_0": null,
+                "algo_id": 6,
+                "description": "Like movie Harry Potter ",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 9,
+                        "text": "What do you like about Harry Potter ?"
+                    },
+                    {
+                        "weight": 1.0,
+                        "algo_id": 10,
+                        "text": "Do you know what movies like Harry Potter came out recently?"
+                    }
+                ]
+            },
+            {
+                "weight": 0.5,
+                "content_0": null,
+                "algo_id": 7,
+                "description": "Like movie The Lord of the Rings Trilogy ",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 11,
+                        "text": "What do you like about The Lord of the Rings Trilogy ?"
+                    },
+                    {
+                        "weight": 1.0,
+                        "algo_id": 12,
+                        "text": "Do you know what movies like The Lord of the Rings Trilogy came out recently?"
+                    }
+                ]
+            },
+            {
+                "weight": 0.5,
+                "content_0": null,
+                "algo_id": 8,
+                "description": "Like movie Pulp Fiction ",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 13,
+                        "text": "What do you like about Pulp Fiction ?"
+                    },
+                    {
+                        "weight": 1.0,
+                        "algo_id": 14,
+                        "text": "Do you know what movies like Pulp Fiction came out recently?"
+                    }
+                ]
+            },
+            {
+                "weight": 0.5,
+                "content_0": null,
+                "algo_id": 9,
+                "description": "Like movie X-Men: First Class ",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 15,
+                        "text": "What do you like about X-Men: First Class ?"
+                    },
+                    {
+                        "weight": 1.0,
+                        "algo_id": 16,
+                        "text": "Do you know what movies like X-Men: First Class came out recently?"
+                    }
+                ]
+            },
+            {
+                "weight": 0.5,
+                "content_0": null,
+                "algo_id": 10,
+                "description": "Like movie Insidious ",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 17,
+                        "text": "What do you like about Insidious ?"
+                    },
+                    {
+                        "weight": 1.0,
+                        "algo_id": 18,
+                        "text": "Do you know what movies like Insidious came out recently?"
+                    }
+                ]
+            },
+            {
+                "weight": 0.5,
+                "content_0": null,
+                "algo_id": 11,
+                "description": "Like movie Harry Potter and the Deathly Hallows – Part 2 ",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 19,
+                        "text": "What do you like about Harry Potter and the Deathly Hallows – Part 2 ?"
+                    },
+                    {
+                        "weight": 1.0,
+                        "algo_id": 20,
+                        "text": "Do you know what movies like Harry Potter and the Deathly Hallows – Part 2 came out recently?"
+                    }
+                ]
+            },
+            {
+                "weight": 0.5,
+                "content_0": null,
+                "algo_id": 12,
+                "description": "Like movie советское кино ",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 21,
+                        "text": "What do you like about советское кино ?"
+                    },
+                    {
+                        "weight": 1.0,
+                        "algo_id": 22,
+                        "text": "Do you know what movies like советское кино came out recently?"
+                    }
+                ]
+            },
+            {
+                "content_0": null,
+                "description": "Like Action/Adventure movies: Pulp Fiction, Pulp Fiction",
+                "tips": [
+                    {
+                        "weight": 0.9,
+                        "algo_id": 23,
+                        "text": "Looks like you like watching Action/Adventure movies. You might like Pulp Fiction"
+                    },
+                    {
+                        "weight": 0.5,
+                        "algo_id": 24,
+                        "text": "Looks like you like watching Action/Adventure movies. What about going to cinema?"
+                    }
+                ],
+                "weight": 0.3,
+                "algo_id": 13,
+                "content_1": null
+            }
+        ],
+        "category_type": "MOVIES"
+    }
+]

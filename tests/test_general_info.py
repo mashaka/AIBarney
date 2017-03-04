@@ -17,6 +17,8 @@ OUTPUT_DIR = os.path.join(WORKING_DIR, 'output')
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, 'general_info_output.json')
 MUSIC_JSON = os.path.join(TEST_DIR, 'music_info.json')
 MUSIC_OUTPUT_FILE = os.path.join(OUTPUT_DIR, 'music_info_output.json')
+MOVIES_JSON = os.path.join(TEST_DIR, 'movies_info.json')
+MOVIES_OUTPUT_FILE = os.path.join(OUTPUT_DIR, 'movies_info_output.json')
 
 class GeneralInfoTestSuite(unittest.TestCase):
     """ Tests for GeneralInfo class """
@@ -28,6 +30,8 @@ class GeneralInfoTestSuite(unittest.TestCase):
             self.data = json.load(f)
         with open(MUSIC_JSON, encoding='utf8') as f:
             self.music_data = json.load(f)
+        with open(MOVIES_JSON, encoding='utf8') as f:
+            self.movies_data = json.load(f)
         self.input_data = []
 
     def test_set_up(self):
@@ -53,4 +57,15 @@ class GeneralInfoTestSuite(unittest.TestCase):
         chat_room = ChatRoom(self.input_data)
         output_dict =  chat_room.get_tips()
         with open(MUSIC_OUTPUT_FILE, mode='w', encoding='utf8') as f:
+            json.dump(output_dict, f, indent=4, ensure_ascii=False)
+
+    def test_movies(self):
+        self.input_data.append(InputData(
+            CategoryType.MOVIES, 
+            self.movies_data,
+            self.movies_data
+        ))
+        chat_room = ChatRoom(self.input_data)
+        output_dict =  chat_room.get_tips()
+        with open(MOVIES_OUTPUT_FILE, mode='w', encoding='utf8') as f:
             json.dump(output_dict, f, indent=4, ensure_ascii=False)
