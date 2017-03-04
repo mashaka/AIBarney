@@ -3,6 +3,7 @@ from rest_framework import generics, mixins, permissions, exceptions, response
 from .models import *
 from .serializers import *
 from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
 
 class MessageList(generics.ListCreateAPIView):
     serializer_class = MessageSerializer
@@ -38,4 +39,11 @@ class MeUser(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user.profile
+
+
+
+class StartChat(APIView):
+    def post(self, request, format=None):
+        print(request.kwargs['user_id'])
+        return Response()
 
