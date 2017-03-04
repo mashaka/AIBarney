@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from .models import *
 
 
-class ProfileSerizlizer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(
                      max_length=30,
                      allow_blank=True,
