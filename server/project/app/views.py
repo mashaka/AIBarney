@@ -5,6 +5,8 @@ from .serializers import *
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import Http404
+
 
 class MessageList(generics.ListCreateAPIView):
     serializer_class = MessageSerializer
@@ -50,9 +52,14 @@ class StartChat(generics.CreateAPIView):
     )
 
     def perform_create(self, serializer):
-        user = get_object_or_404(User, id=self.kwargs['user_id'])
+        user = get_object_or_404(User, id=self.kwargs['user_id']).profile
         profile = self.request.user.profile
-        instance = serializer.save()
-        instance.users.add(profile)
-        instance.users.add(user.profile)
-        instance.save()
+        try:
+            Chat.objects.get(users__in = [user, profile])
+        except Chat.DoesNotExist:
+            instance = serializer.save()
+            instance.users.add(profile)
+            instance.users.add(user)
+            instance.save()
+            return
+        raise Http404()
