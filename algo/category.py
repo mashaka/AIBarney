@@ -28,7 +28,7 @@ class Category:
         elif self.type is CategoryType.MUSIC:
             self.processor = MusicProccessor( data.data_0, data.data_1 )
         elif self.type is CategoryType.BOOKS:
-            self.processor = BookProccessors( data.data_0, data.data_1 )
+            self.processor = BookProccessor( data.data_0, data.data_1 )
         elif self.type is CategoryType.MOVIES:
             self.processor = MovieProccessor( data.data_0, data.data_1 )
             pass

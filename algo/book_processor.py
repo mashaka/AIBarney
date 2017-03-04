@@ -7,7 +7,7 @@ MINIMAL_BOOKS_LIKES = 50
 
 class BookProccessor:
 
-    def __init__( selft, firstData, secondData ):
+    def __init__( self, firstData, secondData ):
         firstDataList = firstData["data"]
         secondDataList = secondData["data"]
         firstIds = set( map( lambda x: x["id"], firstDataList ) )
@@ -19,14 +19,14 @@ class BookProccessor:
 
         for data in firstDataList:
             if data["id"] in intersectionIds:
-                self.commonMovies.append( data )
+                self.commonBooks.append( data )
 
-    def process():
+    def process(self):
 
         intersections = []
         if len( self.firstData ) > MINIMAL_BOOKS_LIKES and len( self.secondData ) > MINIMAL_BOOKS_LIKES:
             intersections.append( Intersection( "Like reading books", 
-            0.1, [None, None], 
+            0.1, (None, None), 
             [
                 Tip( "Do you actually like reading books?", 1.0 ),
                 Tip( "You seem to love books. What is your favourite?", 0.9 )
@@ -36,9 +36,11 @@ class BookProccessor:
         for data in self.commonBooks:
             discussBookTip = "What do you like about book " + data["name"] + "?"
 
-            intersections.append( Intersection( "Like book" + data["name"] + "" ), 
-                0.5, [None, None], [ Tip( discussBookTip, 0.9 ),
-                Tip( discussSimilarMovieTip, 1.0 ) ] )
+            intersections.append( Intersection( "Like book " + data["name"] + "", 
+                0.5, (None, None), [ Tip( discussBookTip, 0.9 ),
+                Tip( discussBookTip, 1.0 ) ] ) )
 
-    def update():
+        return intersections
+
+    def update(self):
         pass
