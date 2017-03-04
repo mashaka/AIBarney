@@ -16,4 +16,4 @@ class Message(models.Model):
     text = models.TextField()
     author = models.ForeignKey(Profile)
     add_time = models.DateTimeField(auto_now_add=True)
-    chat = models.ForeignKey(Chat)
+    chat = models.ForeignKey(Chat, related_name='messages')
