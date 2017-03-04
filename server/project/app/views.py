@@ -34,7 +34,7 @@ class MessageList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
-        return Message.objects.filter(chat=chat).order_by('-add_time')
+        return Message.objects.filter(chat=chat).order_by('add_time')
 
 class UserList(generics.ListAPIView):
     serializer_class = UserListSerializer

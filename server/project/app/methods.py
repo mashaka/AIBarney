@@ -18,3 +18,18 @@ def prepare_user(user):
                 'me/picture', height=160)['url']
         profile.save()
 
+
+def download_data(user):
+    fb = get_connection(user)
+    data = dict()
+    data['music'] = fb.get_object('me/music',
+            fields='genre,cover,events'
+                '{place,name,start_time,end_time}',
+            limit=1000)
+    data['movies'] = fb.get_object('me/movies',
+            fields='genre,cover,name',
+            limit=1000)
+    data['books'] = fb.get_object('me/books', limit=1000)
+    data['general'] = fb.get_object('me',
+            fields='education,hometown,languages,work')
+

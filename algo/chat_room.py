@@ -30,4 +30,3 @@ class ChatRoom:
     def get_tips(self) -> Dict[CategoryType, Category]:
         return self.categories
 
-   
