@@ -26,3 +26,31 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = '__all__'
+
+class ChatSerializer(serializers.ModelSerializer):
+    last_message = serializers.SerializerMethodField()
+    
+    def get_last_message(self, chat):
+        return (MessageSerializer(**{'context': self.context}).
+            to_representation(chat.messages.
+                order_by('-add_time').first()))
+
+    class Meta:
+        model = Chat
+        fields = ('last_message', 'id')
+
+class UserListSerializer(ProfileSerializer):
+    has_chat = serializers.SerializerMethodField()
+    chat = serializers.SerializerMethodField()
+
+    def get_has_chat(self, profile):
+        return False
+
+    def get_chat(self, profile):
+        return None
+    class Meta:
+        model = Profile
+        fields = ('id', 'first_name', 'last_name',
+                  'avatar_url', 'has_chat', 'chat')
+
+
