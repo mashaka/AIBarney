@@ -149,7 +149,7 @@ class MusicProccessor:
                     + ". There will be " + event["name"] + "at " + event["place"]["name"]\
                     + loc + "." + " Do you mind going together?" 
 
-                tip3 = Tip( askAboutFavouritePerformerSongTip, 0.5 )
+                tip3 = Tip( goToEventSuggesion, 0.5 )
                 self.idToType[tip3.id] = QuestionType.ASK_PERFORMER_EVENT
 
                 self.idToPerformer[tip3.id] = id
