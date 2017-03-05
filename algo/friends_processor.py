@@ -58,11 +58,14 @@ class FriendsProcessor:
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
         if UpdateType.DELETE_TIP == data.type:
-            # TODO
-            pass
-        elif UpdateType.INCOME_MSG == data.type:
-            # TODO
-            pass
-        elif UpdateType.OUTCOME_MSG == data.type:
-            # TODO
-            pass
+            self.filter_tip(data.tip_id)
+
+    def filter_tip(self, tip_id: int):
+        for j, intersection in enumerate(self.intersections):
+            for i, tip in enumerate(intersection.tips):
+                if tip.id == tip_id:
+                    del intersection.tips[i]
+                    break
+            if len(intersection.tips) == 0:
+                del self.intersections[j]
+                break
