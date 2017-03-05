@@ -127,7 +127,7 @@ def stop_processing():
     STOP = True
 
 def process_queue(cnt=Decimal('Infinity')):
-    algo.load_model()
+    algo.sentiment_model = algo.load_model()
     while not STOP and cnt > 0:
         sz = Queue.objects.filter(done=False).count()
         print('Queue size:', sz)
