@@ -1,0 +1,69 @@
+{
+  "data": [
+    {
+      "name": "Harry Potter",
+      "cover": {
+        "cover_id": "10154657567549313",
+        "offset_x": 0,
+        "offset_y": 0,
+        "source": "https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/14590421_10154657567549313_9117294083297694383_n.jpg?oh=a77b1dd44cd6febadf77c38938cfb0c6&oe=596FFFC9",
+        "id": "10154657567549313"
+      },
+      "id": "156794164312"
+    },
+    {
+      "name": "The Lord of the Rings Trilogy",
+      "genre": "Adventure / Action / Fantasy",
+      "cover": {
+        "cover_id": "10151206095722437",
+        "offset_x": 0,
+        "offset_y": 0,
+        "source": "https://scontent.xx.fbcdn.net/v/t31.0-8/s720x720/614459_10151206095722437_986538658_o.jpg?oh=d22277512dbcfe60108f7d1931651228&oe=5931F228",
+        "id": "10151206095722437"
+      },
+      "id": "212216417436"
+    },
+    {
+      "name": "Pulp Fiction",
+      "genre": "Action/Adventure",
+      "cover": {
+        "cover_id": "770296786389137",
+        "offset_x": 0,
+        "offset_y": 0,
+        "source": "https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/10933691_770296786389137_6300025222507634015_n.jpg?oh=20eb2a7eab46c54510066d5058d4b3b7&oe=59717D83",
+        "id": "770296786389137"
+      },
+      "id": "112842988801190"
+    },
+    {
+      "name": "X-Men: First Class",
+      "id": "128656183895777"
+    },
+    {
+      "name": "Insidious",
+      "genre": "Horror",
+      "cover": {
+        "cover_id": "897664383620749",
+        "offset_x": 0,
+        "offset_y": 0,
+        "source": "https://scontent.xx.fbcdn.net/v/t1.0-9/s720x720/11221768_897664383620749_8652070098253221235_n.jpg?oh=ea2316316281c98b2c9eee4071bca0b2&oe=596EF0FB",
+        "id": "897664383620749"
+      },
+      "id": "148418438545351"
+    },
+    {
+      "name": "Harry Potter and the Deathly Hallows – Part 2",
+      "id": "202017836506691"
+    },
+    {
+      "name": "советское кино",
+      "id": "117750034904048"
+    }
+  ],
+  "paging": {
+    "cursors": {
+      "before": "MTU2Nzk0MTY0MzEy",
+      "after": "MTE3NzUwMDM0OTA0MDQ4"
+    }
+  }
+}

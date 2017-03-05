@@ -1,0 +1,83 @@
+[
+    {
+        "category_type": "GENERAL_INFO",
+        "weight": 1,
+        "intersections": [
+            {
+                "tips": [
+                    {
+                        "algo_id": 23,
+                        "weight": 1,
+                        "text": "Wow, i have just seen in your facebook that we both studied in центр образования 218. That's cool!"
+                    },
+                    {
+                        "algo_id": 24,
+                        "weight": 1,
+                        "text": "Do you love центр образования 218? I also studied there and these days were great :)"
+                    }
+                ],
+                "description": "You both studied in центр образования 218",
+                "algo_id": 12,
+                "weight": 1
+            },
+            {
+                "tips": [
+                    {
+                        "algo_id": 25,
+                        "weight": 1,
+                        "text": "Wow, i have just seen in your facebook that we both studied in МФТИ. That's cool!"
+                    },
+                    {
+                        "algo_id": 26,
+                        "weight": 1,
+                        "text": "Do you love МФТИ? I also studied there and these days were great :)"
+                    }
+                ],
+                "description": "You both studied in МФТИ",
+                "algo_id": 13,
+                "weight": 1
+            },
+            {
+                "tips": [
+                    {
+                        "algo_id": 27,
+                        "weight": 1,
+                        "text": "Wow, i have just seen in your facebook that we both work in ABBYY. That's cool!"
+                    },
+                    {
+                        "algo_id": 28,
+                        "weight": 1,
+                        "text": "Do you love ABBYY? I also worked there and these days were great :)"
+                    }
+                ],
+                "description": "You both workes in ABBYY",
+                "algo_id": 14,
+                "weight": 1
+            },
+            {
+                "tips": [
+                    {
+                        "algo_id": 29,
+                        "weight": 1,
+                        "text": "Wow, you are also Software Engineer. That's cool!"
+                    }
+                ],
+                "description": "You both workes as Software Engineer",
+                "algo_id": 15,
+                "weight": 0.9
+            },
+            {
+                "tips": [
+                    {
+                        "algo_id": 30,
+                        "weight": 1,
+                        "text": "You also from Moscow, Russia, aren't you?"
+                    }
+                ],
+                "description": "You both born in Moscow, Russia",
+                "algo_id": 16,
+                "weight": 1
+            }
+        ]
+    }
+]

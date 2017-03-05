@@ -189,3 +189,19 @@ LOGIN_REDIRECT_URL = 'get_token'
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}
+
+SWAGGER_SETTINGS = {
+        'base_path': 'ryadom.me/docs',
+        'is_authenticated': True,
+        'api_path': 'http://ryadom.me/api/',
+}
+
