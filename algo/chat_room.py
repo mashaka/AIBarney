@@ -10,7 +10,7 @@ import json
 import logging
 
 from .category import Category
-from .tools import UpdateInfo, InputData, DataNLP, CategoryType
+from .tools import UpdateInfo, InputData, DataNLP, CategoryType, UpdateType
 from .sentiment_analysis import classify
 
 # model for sentiment analysis
@@ -32,7 +32,7 @@ class ChatRoom:
         is_positive = None
         if data.type is UpdateType.INCOME_MSG or \
                 data.type is UpdateType.OUTCOME_MSG or \
-                data.type is OUTCOME_TIP_MSG.INCOME_MSG:
+                data.type is UpdateType.OUTCOME_TIP_MSG:
             if sentiment_model is None:
                 raise ValueError('{}: You should load sentiment model'.format(self.TAG))
             is_positive = classify(data.msg)

@@ -7,6 +7,7 @@ import algo
 import facebook
 facebook.VALID_API_VERSIONS = ['2.8']
 
+
 def get_token(user):
     return (user.social_auth.get(provider='facebook').
             extra_data['access_token'])
@@ -75,15 +76,19 @@ def start_chat(chat):
     cdb.data=pickle.dumps(chatb)
     cdb.save()
 
-def new_message(msg):
+def new_message(msg, tip):
     chata = ChatData.objects.get(user=msg.author.user, chat=msg.chat)
     userb = msg.chat.users.all().exclude(
             user=msg.author.user).first().user
     chatb = ChatData.objects.get(user=userb, chat=msg.chat)
     rooma = pickle.loads(chata.data)
     roomb = pickle.loads(chatb.data)
-    rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_MSG,
+    if tip is None:
+        rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_MSG,
                                 msg.text))
+    else:
+        rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_TIP_MSG,
+                                msg.text, tip))
     roomb.update(algo.UpdateInfo(algo.UpdateType.INCOME_MSG,
                                 msg.text))
     chata.data = pickle.dumps(rooma)
@@ -104,7 +109,12 @@ def process_queue_item(job):
     elif job.type == 'start_chat':
         start_chat(Chat.objects.get(id=int(job.args)))
     elif job.type == 'message':
-        new_message(Message.objects.get(id=int(job.args)))
+        msg, tip = job.args.split('_')
+        if tip == 'None':
+            tip = None
+        else:
+            tip = int(tip)
+        new_message(Message.objects.get(id=int(msg)), tip)
     elif job.type == 'delete_tip':
         cd, tip_id = job.args.split('_')
         delete_tip(ChatData.objects.get(id=int(cd)), int(tip_id))
@@ -117,6 +127,7 @@ def stop_processing():
     STOP = True
 
 def process_queue(cnt=Decimal('Infinity')):
+    algo.sentiment_model = algo.load_model()
     while not STOP and cnt > 0:
         sz = Queue.objects.filter(done=False).count()
         print('Queue size:', sz)

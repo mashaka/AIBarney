@@ -3,7 +3,7 @@
 # Copyright 2017
 #####
 
-from .chat_room import ChatRoom
+from .chat_room import ChatRoom, sentiment_model
 from .category import Category
 from .intersection import Intersection
 from .content import Content
