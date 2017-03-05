@@ -88,3 +88,13 @@ class ChatTips(APIView):
                             chat=chat, user=request.user).data)
         tips = room.get_tips()
         return Response(tips)
+
+
+class DeleteTip(APIView):
+    def post(self, request, chat_id, tip_id, format=None):
+        chat_data = get_object_or_404(ChatData, user=request.user,
+                chat_id=int(chat_id))
+        Queue.objects.create(type='delete_tip',
+                args=str(chat_data.id) + '_' + tip_id)
+        return Response()
+
