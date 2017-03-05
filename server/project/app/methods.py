@@ -12,6 +12,10 @@ def get_token(user):
     return (user.social_auth.get(provider='facebook').
             extra_data['access_token'])
 
+def get_fb_id(user):
+    return (user.social_auth.get(provider='facebook').
+            extra_data['id'])
+
 def get_connection(user):
     return facebook.GraphAPI(access_token=get_token(user),
             version='2.8')
@@ -23,6 +27,10 @@ def prepare_user(user):
         profile.avatar_url = get_connection(user).get_object(
                 'me/picture', height=160)['url']
         profile.save()
+
+def mutual_friends(usera, userb):
+    return get_connection(usera).get_object(get_fb_id(userb),
+            fields='context')['context']['mutual_friends']
 
 
 def download_data(user):
@@ -65,8 +73,14 @@ def start_chat(chat):
     usera, userb = chat.users.all()[:]
     dataa = pickle.loads(usera.user.userdata.data)
     datab = pickle.loads(userb.user.userdata.data)
-    chata = algo.ChatRoom(build_input_data(dataa, datab))
-    chatb = algo.ChatRoom(build_input_data(datab, dataa))
+    buildeda = build_input_data(dataa, datab)
+    buildedb = build_input_data(datab, dataa)
+    buildeda.append(algo.InputData(algo.CategoryType.FRIENDS,
+                    mutual_friends(usera.user, userb.user), None))
+    buildedb.append(algo.InputData(algo.CategoryType.FRIENDS,
+                    mutual_friends(userb.user, usera.user), None))
+    chata = algo.ChatRoom(buildeda)
+    chatb = algo.ChatRoom(buildedb)
     cda, _ = ChatData.objects.get_or_create(user=usera.user,
                                             chat=chat)
     cda.data=pickle.dumps(chata)
