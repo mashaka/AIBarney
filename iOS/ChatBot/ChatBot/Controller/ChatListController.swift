@@ -92,4 +92,16 @@ class ChatListController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func onPlus(_ sender: Any) {
         performSegue(withIdentifier: "toChoseUser", sender: nil)
     }
+    
+    // -----------------------------------
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        if motion == .motionShake {
+            AuthData.shared.id = nil
+            AuthData.shared.token = nil
+            //AuthHelper.isAuthorized = false
+            present(UIHelper.createAuthController(), animated: false, completion: nil)
+        }
+    }
 }

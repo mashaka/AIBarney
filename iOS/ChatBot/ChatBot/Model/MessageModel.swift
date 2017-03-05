@@ -41,7 +41,12 @@ struct Message {
         self.id = json!["id"].stringValue
     }
     
-    func apiParams() -> [String: String] {
-        return ["text": text]
+    func apiParams(algoId: String? = nil) -> [String: String] {
+        if algoId != nil {
+            return ["text": text,
+                    "used_tip": algoId!]
+        } else {
+            return ["text": text]
+        }
     }
 }

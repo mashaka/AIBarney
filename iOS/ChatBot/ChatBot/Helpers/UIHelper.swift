@@ -70,6 +70,9 @@ class UIHelper {
         navAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIHelper.grayTextColor,
             NSFontAttributeName: navBarFont()]
         
+        navAppearance.shadowImage = UIImage()
+        navAppearance.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName : barButtonFont()], for: .normal)
     }
     

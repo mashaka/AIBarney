@@ -7,6 +7,7 @@ PODS:
     - PubNub/Core (= 4.5.13)
   - PubNub/Core (4.5.13)
   - SwiftyJSON (3.1.4)
+  - SwipeCellKit (1.2.0)
   - Typist (1.0.0)
 
 DEPENDENCIES:
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Hero
   - PubNub
   - SwiftyJSON
+  - SwipeCellKit
   - Typist
 
 SPEC CHECKSUMS:
@@ -23,8 +25,9 @@ SPEC CHECKSUMS:
   Hero: 48f8df6798d16d35935cfbb0726c5fbbd23cfe5a
   PubNub: 53711c37f9bcd8f927f154ca91774910a6b552ed
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwipeCellKit: 8aa776c650c5b775c2231c39e39e2f391eed83a4
   Typist: 470a4f47f4e635ccd0e9f3ff9ce2d70c9e6001a5
 
-PODFILE CHECKSUM: 8b28260126e3f39b427c70f9340cdd16d757e0ab
+PODFILE CHECKSUM: 01eb4890fe0f8a3d078b45620ad7f2eb86787f73
 
 COCOAPODS: 1.1.0

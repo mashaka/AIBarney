@@ -1,27 +1,22 @@
 //
-//  ChatMyMessageTableViewCell.swift
+//  TipMessageTableViewCell.swift
 //  ChatBot
 //
-//  Created by Alexander Danilyak on 04/03/2017.
+//  Created by Alexander Danilyak on 05/03/2017.
 //  Copyright © 2017 Alexander Danilyak. All rights reserved.
 //
 
 import UIKit
+import SwipeCellKit
 
-class ChatMyMessageTableViewCell: UITableViewCell {
+class TipMessageTableViewCell: SwipeTableViewCell {
+    
     @IBOutlet weak var messageContainerView: UIView!
     @IBOutlet weak var messageTextLabel: UILabel!
-    @IBOutlet weak var activity: UIActivityIndicatorView!
     
-    var message: Message? {
+    var tip: Tip? {
         didSet {
-            messageTextLabel.text = message!.text
-        }
-    }
-    
-    var isSending: Bool = false {
-        didSet {
-            isSending ? activity.startAnimating() : activity.stopAnimating()
+            messageTextLabel.text = tip!.text
         }
     }
     
@@ -33,4 +28,5 @@ class ChatMyMessageTableViewCell: UITableViewCell {
         messageContainerView.layer.borderColor = UIColor(white: 0.87, alpha: 1.0).cgColor
         messageContainerView.layer.borderWidth = 1.0
     }
+    
 }

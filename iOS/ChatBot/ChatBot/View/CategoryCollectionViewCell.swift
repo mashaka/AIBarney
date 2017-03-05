@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryCollectionViewCell {
+class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryCoverImageView: UIImageView!
     @IBOutlet weak var categoryNameLabel: UILabel!
     
