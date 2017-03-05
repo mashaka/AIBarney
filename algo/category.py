@@ -52,11 +52,11 @@ class Category:
         self.weight = 1
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
-        print( '{}: intersections count before update for {} is {}'.format(self.TAG, self.type, self.intersections) )
+        print( '{}: intersections count before update for {} is {}'.format(self.TAG, self.type.name, len(self.intersections)) )
         self.processor.update(data, dataNLP)
         if self.type is not CategoryType.GENERAL_INFO and self.type is not CategoryType.FRIENDS:
             self.intersections = self.processor.process()
-        print( '{}: intersections count after update for {} is {}'.format(self.TAG, self.type, self.intersections) )
+        print( '{}: intersections count after update for {} is {}'.format(self.TAG, self.type.name, len(self.intersections)) )
 
     def serialize(self) -> Dict:
         output_dict = dict()
