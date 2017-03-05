@@ -97,12 +97,16 @@ def new_message(msg, tip):
     chatb = ChatData.objects.get(user=userb, chat=msg.chat)
     rooma = pickle.loads(chata.data)
     roomb = pickle.loads(chatb.data)
+    print('start if')
     if tip is None:
+        print('sending no tip')
         rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_MSG,
                                 msg.text))
     else:
+        print('sending tip')
         rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_TIP_MSG,
                                 msg.text, tip))
+    print('end if')
     roomb.update(algo.UpdateInfo(algo.UpdateType.INCOME_MSG,
                                 msg.text))
     chata.data = pickle.dumps(rooma)
