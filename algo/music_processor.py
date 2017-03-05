@@ -113,7 +113,7 @@ class MusicProccessor:
         for data in self.commonPerformers:
             id = data["id"]
 
-            if self.performersWeights[id] > 0:
+            if self.performersWeights[id] < 0.5:
                 continue
 
             pictureUrl = getCoverUrl( data )
