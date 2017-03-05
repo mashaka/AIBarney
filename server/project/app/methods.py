@@ -108,7 +108,7 @@ def process_queue_item(job):
     elif job.type == 'start_chat':
         start_chat(Chat.objects.get(id=int(job.args)))
     elif job.type == 'message':
-        msg, tip = job.args.split()
+        msg, tip = job.args.split('_')
         if tip == 'None':
             tip = None
         else:
