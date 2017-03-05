@@ -47,6 +47,15 @@ def build_input_data(dataa, datab):
     res.append(algo.InputData(algo.CategoryType.GENERAL_INFO,
                         dataa['general'],
                         datab['general']))
+    res.append(algo.InputData(algo.CategoryType.MUSIC,
+                        dataa['music'],
+                        datab['music']))
+    res.append(algo.InputData(algo.CategoryType.BOOKS,
+                        dataa['books'],
+                        datab['books']))
+    res.append(algo.InputData(algo.CategoryType.MOVIES,
+                        dataa['movies'],
+                        datab['movies']))
     return res
 
 def start_chat(chat):
