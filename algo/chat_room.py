@@ -19,6 +19,7 @@ sentiment_model = None
 module_logger = logging.getLogger('ChatRoom')
 
 def LOAD():
+    global sentiment_model
     sentiment_model = load_model()
 
 class ChatRoom:
@@ -32,6 +33,7 @@ class ChatRoom:
             self.categories.append(Category(category_data))
 
     def update(self, data: UpdateInfo):
+        global sentiment_model
         is_positive = None
         if data.type is UpdateType.INCOME_MSG or \
                 data.type is UpdateType.OUTCOME_MSG or \
