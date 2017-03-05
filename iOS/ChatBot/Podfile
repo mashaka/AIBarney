@@ -7,4 +7,6 @@ target ‘ChatBot’ do
     pod 'AlamofireImage'
     pod 'SwiftyJSON'
     pod 'Hero'
+    pod 'Typist'
+    pod 'PubNub'
 end

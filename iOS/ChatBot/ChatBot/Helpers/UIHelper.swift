@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class UIHelper {
     
     // Singleton   -------------------
     
     static let shared: UIHelper = UIHelper()
+    
+    let imageDownloader = ImageDownloader()
+    let imageCache = AutoPurgingImageCache()
     
     // Static Shit -------------------
     
@@ -30,8 +34,17 @@ class UIHelper {
         gradient.colors = [pinkColor.cgColor, orangeColor.cgColor]
         gradient.cornerRadius = cornerRadius
         gradient.masksToBounds = true
+        gradient.name = "chatbot-gradient"
         
-        view.layer.insertSublayer(gradient, at: 0)
+        let oldGradienLayerIndex = view.layer.sublayers?.index(where: { layer -> Bool in
+            return layer.name == "chatbot-gradient"
+        })
+        
+        if oldGradienLayerIndex != nil {
+            view.layer.replaceSublayer(view.layer.sublayers![oldGradienLayerIndex!], with: gradient)
+        } else {
+            view.layer.insertSublayer(gradient, at: 0)
+        }
     }
     
     static func createColoredShadowOnView(view: UIView) {
@@ -72,5 +85,38 @@ class UIHelper {
         auth.modalTransitionStyle = .flipHorizontal
         
         return auth
+    }
+    
+    // -------------------------------
+    
+    func downloadAndSetImage(imageView: UIImageView, imageUrl: URL?) {
+        func setImageAnimated(imageView: UIImageView, image: UIImage) {
+            DispatchQueue.main.async {
+                UIView.transition(with: imageView,
+                                  duration: 0.2,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    imageView.image = image
+                },
+                                  completion: nil)
+            }
+        }
+        
+        guard let url = imageUrl else {
+            //print("Bad Image Url")
+            return
+        }
+        
+        guard let imageInCache = imageCache.image(for: URLRequest(url: url)) else {
+            imageDownloader.download(URLRequest(url: url)) { response in
+                if let image = response.result.value {
+                    self.imageCache.add(image, for: URLRequest(url: url))
+                    setImageAnimated(imageView: imageView, image: image)
+                }
+            }
+            return
+        }
+        
+        setImageAnimated(imageView: imageView, image: imageInCache)
     }
 }

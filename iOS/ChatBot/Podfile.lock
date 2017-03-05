@@ -3,20 +3,28 @@ PODS:
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
   - Hero (0.3.2)
+  - PubNub (4.5.13):
+    - PubNub/Core (= 4.5.13)
+  - PubNub/Core (4.5.13)
   - SwiftyJSON (3.1.4)
+  - Typist (1.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Hero
+  - PubNub
   - SwiftyJSON
+  - Typist
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   Hero: 48f8df6798d16d35935cfbb0726c5fbbd23cfe5a
+  PubNub: 53711c37f9bcd8f927f154ca91774910a6b552ed
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Typist: 470a4f47f4e635ccd0e9f3ff9ce2d70c9e6001a5
 
-PODFILE CHECKSUM: 504c42b5402ca7344745c1d09b71de0feed81110
+PODFILE CHECKSUM: 8b28260126e3f39b427c70f9340cdd16d757e0ab
 
 COCOAPODS: 1.1.0

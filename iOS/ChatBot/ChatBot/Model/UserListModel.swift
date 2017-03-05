@@ -7,9 +7,18 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct UserListModel {
-    var list: [User]
+    var list: [User] = []
+    
+    mutating func setupWith(json: JSON) {
+        list.removeAll()
+        for userJson in json.arrayValue {
+            let user = User(json: userJson)
+            list.append(user)
+        }
+    }
     
     lazy var mockList: [User] = {
         return [

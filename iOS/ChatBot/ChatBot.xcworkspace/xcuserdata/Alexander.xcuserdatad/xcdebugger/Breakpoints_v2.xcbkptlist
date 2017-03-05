@@ -9,14 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatBot/Helpers/AuthHelper.swift"
-            timestampString = "510326459.701266"
+            filePath = "ChatBot/Controller/ChatViewController.swift"
+            timestampString = "510370106.741176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "isAuthorized"
-            landmarkType = "24">
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "messageSent(isSucces:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,13 +25,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatBot/AppDelegate.swift"
-            timestampString = "510326440.029039"
+            filePath = "ChatBot/Controller/ChatViewController.swift"
+            timestampString = "510370106.741176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "application(_:handleOpen:)"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "onSend(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatBot/Controller/ChatViewController.swift"
+            timestampString = "510370106.741176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "gotTipsByCategories(json:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatBot/Controller/ChatViewController.swift"
+            timestampString = "510370106.741176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "gotTipsByCategories(json:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

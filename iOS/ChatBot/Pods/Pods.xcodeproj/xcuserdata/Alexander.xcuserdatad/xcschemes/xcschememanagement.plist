@@ -24,7 +24,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PubNub.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Typist.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,12 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>7DAE3D0839577D188E92980F915098C4</key>
+		<key>30665799D1F9BDB11E0D683EAEFA7E2F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A9140C069E127970FF371E608357267</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EADA7A9975315556387A5F69FBE5C48F</key>
+		<key>C40DBA43B6C267C830CE802A512591B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E19DCF6A4283FFAA61F5CD430057613E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

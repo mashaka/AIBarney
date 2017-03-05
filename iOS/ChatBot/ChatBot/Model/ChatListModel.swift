@@ -7,15 +7,18 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct ChatListModel {
-    var sections: [[Any]] = []
+    var list: [Chat] = []
     
-    mutating func loadModel() {
-        sections = [createRecentChatsSection()]
-    }
-    
-    func createRecentChatsSection() -> [Chat] {
-        return []
+    mutating func setupWith(json: JSON) {
+        list.removeAll()
+        for jsonElement in json.arrayValue {
+            let user = User(json: jsonElement)
+            if jsonElement["has_chat"].boolValue {
+                list.append(Chat(json: jsonElement["chat"], partner: user))
+            }
+        }
     }
 }

@@ -20,12 +20,12 @@ class AuthController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if AuthHelper.shared.isAuthorized {
+        if AuthHelper.isAuthorized {
             dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func onLogin(_ sender: Any) {
-        AuthHelper.shared.loginToFacebook()
+        AuthHelper.loginToFacebook()
     }
 }

@@ -91,6 +91,13 @@ def new_message(msg):
     chatb.data = pickle.dumps(roomb)
     chatb.save()
 
+def delete_tip(chatdata, tip_id):
+    data = pickle.loads(chatdata.data)
+    data.update(algo.UpdateInfo(
+        algo.UpdateType.DELETE_TIP, None, tip_id))
+    chatdata.data = pickle.dumps(data)
+    chatdata.save()
+
 def process_queue_item(job):
     if job.type == 'fetch':
         download_data(User.objects.get(id=int(job.args)))
@@ -98,6 +105,9 @@ def process_queue_item(job):
         start_chat(Chat.objects.get(id=int(job.args)))
     elif job.type == 'message':
         new_message(Message.objects.get(id=int(job.args)))
+    elif job.type == 'delete_tip':
+        cd, tip_id = job.args.split('_')
+        delete_tip(ChatData.objects.get(id=int(cd)), int(tip_id))
     else:
         raise Exception('Unknown job type ' + job.type)
     job.done = True
