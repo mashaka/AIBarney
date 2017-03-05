@@ -7,6 +7,8 @@ import algo
 import facebook
 facebook.VALID_API_VERSIONS = ['2.8']
 
+algo.load_model()
+
 def get_token(user):
     return (user.social_auth.get(provider='facebook').
             extra_data['access_token'])
