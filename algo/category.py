@@ -54,6 +54,7 @@ class Category:
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
         self.processor.update(data, dataNLP)
         self.intersections = self.processor.process()
+        print( self.intersections )
 
     def serialize(self) -> Dict:
         output_dict = dict()
