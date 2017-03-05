@@ -25,7 +25,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class MessageSerializer(serializers.ModelSerializer):
     author = serializers.SerializerMethodField(method_name='get_mauthor')
-    used_tip = serializers.IntegerField(write_only=True, required=False, allow_null=True)
+    used_tip = serializers.CharField(write_only=True, required=False, allow_null=True)
     def get_mauthor(self, post):
         return ProfileSerializer(**{'context': self.context}).to_representation(post.author)
     class Meta:
