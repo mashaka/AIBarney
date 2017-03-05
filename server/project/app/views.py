@@ -26,7 +26,6 @@ class MessageList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
-        print(serializer.validated_data)
         used_tip = serializer.validated_data.get('used_tip', None)
         try:
             serializer.validated_data.pop('used_tip')
