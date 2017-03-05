@@ -193,10 +193,13 @@ class MusicProccessor:
                 self.performersWeights[performer] = 0.0
         elif UpdateType.INCOME_MSG == data.type:
             flag = nlpInfo.is_positive
+            print( self.performersWeights )
+            print(flag)
             if data.msg == "Yes":
                 flag = True
             if data.msg == "No":
                 flag = False
+            print(self.lastTipId)
             if self.lastTipId != -1:
                 tp = self.idToType[self.lastTipId]
                 if tp == QuestionType.GENERAL_MUSIC_QUESTION:
@@ -204,14 +207,14 @@ class MusicProccessor:
                         self.music_confidence = 1.0
                     elif flag == False:
                         self.music_confidence = 0.0
-                if tp == QuestionType.PERFORMER_LIKING_QUESTION:
+                if tp == QuestionType.PERFORMER_LIKING_QUESTION or tp == QuestionType.SPECIFIC_PERFORMER_QUESTION:
                     if flag == True:
                         self.performersWeights[ self.idToPerformer[self.lastTipId] ] = 1.0
                     elif flag == False:
                         self.performersWeights[ self.idToPerformer[self.lastTipId] ] = 0.0
-
                 if tp == QuestionType.GENERAL_MUSIC_QUESTION or tp == QuestionType.SPECIFIC_GENERAL_QUESTION:
                     self.abusiveLoveToMusicsDefaultWeight = 0.0
+            print( self.performersWeights )
 
         elif UpdateType.OUTCOME_MSG == data.type:
             pass
