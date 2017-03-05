@@ -3,10 +3,12 @@ from .intersection import Intersection
 from .tip import Tip
 import random
 from .content import Content, ContentType
+from enum import Enum, unique
+from .tools import UpdateType
 
 def tipString( data, tipBegin, tipEnd ):
     performerName = data["name"]
-    return tipBegin + " " + performerName + " " + tipEnd
+    return tipBegin + " " + performerName + tipEnd
 
 def getCoverUrl( data ):
     pictureUrl = None
@@ -14,14 +16,27 @@ def getCoverUrl( data ):
         pictureUrl = data["cover"]["source"]
     return pictureUrl
 
-MINIMAL_MOVIES_LIKES = 50
-abusiveLoveToMovieDefaultWeight = 0.1
+MINIMAL_MOVIES_LIKES = 20
+abusiveLoveToMovieDefaultWeight = 1.0
 suggestCommonMovieWeight = 0.5
 suggestCommonGenreWeight = 0.3
+
+
+@unique
+class QuestionType(Enum):
+    GENERAL_MOVIE_QUESTION = 1,
+    SPECIFIC_GENERAL_QUESTION = 2,
+    DISCUSS_MOVIE = 3,
+    DISCUSS_SIMILAR_MOVIE = 4,
+    DISCUSS_GENRE_MOVIE_SUGGESTION = 5,
+    DISCUSS_GENRE_CINEMA_SUGGESTION = 6
+
 
 class MovieProccessor:
 
     def __init__( self, firstData, secondData):
+        self.movie_confidence = 0.5
+
         firstDataList = firstData["data"]
         secondDataList = secondData["data"]
         firstIds = set( map( lambda x: x["id"], firstDataList ) )
@@ -49,28 +64,34 @@ class MovieProccessor:
             if "genre" in data and data["genre"] in intersectionGenres:
                 self.genreToMoviesLists[data["genre"]][1].append( data )
 
+        self.idToType = dict()
+        self.idToMovie = dict()
+
+        self.lastTipId = -1
+
     def process(self):
 
+        if self.movie_confidence < 0.5:
+            return []
+
         intersections = []
+
+        tip1 = Tip( "Do you actually like watching movies?", 1.0 )
+        tip2 = Tip( "You seem to love movies. What is your favourite?", 0.9)
         if len( self.firstData ) > MINIMAL_MOVIES_LIKES and len( self.secondData ) > MINIMAL_MOVIES_LIKES:
-            intersections.append( Intersection( "Like watching movies", 
-            abusiveLoveToMusicsDefaultWeight, [None, None], 
-            [
-                Tip( "Do you actually like watching movies?", 1.0 ),
-                Tip( "You seem to love movies. What is your favourite?", 0.9 )
-            ],
-            0.1 ) )
+            intersections.append( Intersection( "Like watching movies",
+                abusiveLoveToMovieDefaultWeight, (None, None), [ tip1, tip2 ] ) )
         
         for data in self.commonMovies:
             pictureUrl = getCoverUrl( data )
 
             discussMovieTip = tipString( data, "What do you like about", "?" )
-            discussSimilarMovieTip = tipString( data, "Do you know what movies like", "came out recently?" )
+            discussSimilarMovieTip = tipString( data, "Do you know what movies like", " came out recently?" )
 
             intersections.append( Intersection( tipString( data, "Like movie", "" ), 
                 suggestCommonMovieWeight, ( Content( ContentType.IMAGE_URL, pictureUrl ), None ), 
                 [ Tip( discussMovieTip, 0.9 ),
-                Tip( discussSimilarMovieTip, 1.0 ) ] ) )
+                  Tip( discussSimilarMovieTip, 1.0 ) ] ) )
 
         for genre, moviesPair in self.genreToMoviesLists.items():
             firstList = moviesPair[0]
@@ -91,9 +112,19 @@ class MovieProccessor:
                     suggestCommonGenreWeight, ( Content( ContentType.IMAGE_URL, firstUrl ), 
                     Content( ContentType.IMAGE_URL, secondUrl ) ), 
                     [ Tip( movieRecomendation, 0.9 ),
-                    Tip( goingToCinemaSuggestion, 0.5 )  ] ) )
+                      Tip( goingToCinemaSuggestion, 0.5 )  ] ) )
 
         return intersections
 
     def update(self, updateInfo, nlpInfo):
-        pass
+        if UpdateType.DELETE_TIP == data.type:
+            id = data.tip_id
+            pass
+        elif UpdateType.INCOME_MSG == data.type:
+            pass
+
+        elif UpdateType.OUTCOME_MSG == data.type:
+            pass
+        elif UpdateType.OUTCOME_TIP_MSG == data.type:
+            self.lastTipId = data.tip_id
+            pass
