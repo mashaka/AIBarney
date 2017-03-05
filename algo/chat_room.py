@@ -32,6 +32,7 @@ class ChatRoom:
     def get_tips(self) -> Dict[CategoryType, Category]:
         output_list = []
         for category in self.categories:
-            output_list.append(category.serialize())
+            if( len( category.intersections ) > 0 ):
+                output_list.append(category.serialize())
         return output_list
 
