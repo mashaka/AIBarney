@@ -26,9 +26,9 @@ class MessageList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
-        print(serializer.cleaned_data['used_tip'])
+        print(serializer.validated_data['used_tip'])
         try:
-            serializer.cleaned_data.pop('used_tip')
+            serializer.validated_data.pop('used_tip')
         except:
             pass
         instance = serializer.save(author=profile, chat=chat)
