@@ -26,8 +26,12 @@ class MessageList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
-        instance = serializer.save(author=profile, chat=chat)
         print(serializer.cleaned_data['used_tip'])
+        try:
+            serializer.cleaned_data.pop('used_tip')
+        except:
+            pass
+        instance = serializer.save(author=profile, chat=chat)
         Queue.objects.create(type='message', args=str(instance.id))
         user_to = [p.user.id for p in chat.users.all() if p.id != profile.id][0]
         channel = str(user_to) + '_' + str(chat.id)
