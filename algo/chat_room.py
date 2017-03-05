@@ -10,7 +10,7 @@ import json
 import logging
 
 from .category import Category
-from .tools import UpdateInfo, InputData, DataNLP, CategoryType
+from .tools import UpdateInfo, InputData, DataNLP, CategoryType, UpdateType
 from .sentiment_analysis import classify
 
 # model for sentiment analysis
