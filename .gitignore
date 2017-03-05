@@ -87,4 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
 tests/output/
+algo/train_data/
+model.pkl

@@ -11,6 +11,10 @@ import logging
 
 from .category import Category
 from .tools import UpdateInfo, InputData, DataNLP, CategoryType
+from .sentiment_analysis import classify
+
+# model for sentiment analysis
+sentiment_model = None
 
 module_logger = logging.getLogger('ChatRoom')
 
@@ -25,9 +29,15 @@ class ChatRoom:
             self.categories.append(Category(category_data))
 
     def update(self, data: UpdateInfo):
-        # TODO: add some NLP here
+        is_positive = None
+        if data.type is UpdateType.INCOME_MSG or \
+                data.type is UpdateType.OUTCOME_MSG or \
+                data.type is OUTCOME_TIP_MSG.INCOME_MSG:
+            if sentiment_model is None:
+                raise ValueError('{}: You should load sentiment model'.format(self.TAG))
+            is_positive = classify(data.msg)
         for category in self.categories:
-            category.update(data, DataNLP())
+            category.update(data, DataNLP(is_positive))
 
     def get_tips(self) -> Dict[CategoryType, Category]:
         output_list = []
