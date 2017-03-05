@@ -7,7 +7,6 @@ import algo
 import facebook
 facebook.VALID_API_VERSIONS = ['2.8']
 
-algo.load_model()
 
 def get_token(user):
     return (user.social_auth.get(provider='facebook').
@@ -128,6 +127,7 @@ def stop_processing():
     STOP = True
 
 def process_queue(cnt=Decimal('Infinity')):
+    algo.load_model()
     while not STOP and cnt > 0:
         sz = Queue.objects.filter(done=False).count()
         print('Queue size:', sz)
