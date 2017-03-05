@@ -193,7 +193,7 @@ class MusicProccessor:
                 self.performersWeights[performer] = 0.0
         elif UpdateType.INCOME_MSG == data.type:
             flag = nlpInfo.is_positive
-            if lastTipId != -1:
+            if self.lastTipId != -1:
                 tp = self.idToType[self.lastTipId]
                 if tp == QuestionType.GENERAL_MUSIC_QUESTION:
                     if flag == True:
