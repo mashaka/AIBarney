@@ -113,6 +113,9 @@ class MusicProccessor:
         for data in self.commonPerformers:
             id = data["id"]
 
+            print( id )
+            print( self.performersWeights[id] )
+
             if self.performersWeights[id] < 0.5:
                 continue
 
