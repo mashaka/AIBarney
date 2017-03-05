@@ -46,6 +46,21 @@ class ChoseUserController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        API.startChat(userId: userListModel.list[indexPath.row].id) { (isSuccess) in
+            if isSuccess {
+                self.dismiss(animated: true, completion: {
+                    let chatList = Router.getTopMostVisibleController() as! ChatListController
+                    chatList.updateAll()
+                })
+            } else {
+                // to do
+            }
+        }
+    }
+    
     // --------------
     
     @IBAction func onCancel(_ sender: Any) {

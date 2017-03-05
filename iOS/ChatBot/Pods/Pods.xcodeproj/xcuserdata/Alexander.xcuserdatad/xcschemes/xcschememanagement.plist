@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwipeCellKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Typist.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,17 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>30665799D1F9BDB11E0D683EAEFA7E2F</key>
+		<key>1384C7C196673F32B98FAB761D3AB535</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>288A3FA18F424C64C757655807A5B4E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3D241C3A718E2849731785CD37031735</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8A9140C069E127970FF371E608357267</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C40DBA43B6C267C830CE802A512591B5</key>
+		<key>D4A7D2B07E997FC7753FABCE78BFA2CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E19DCF6A4283FFAA61F5CD430057613E</key>
+		<key>D8A37C45BF00CAA9B7489D8AABAA3891</key>
 		<dict>
 			<key>primary</key>
 			<true/>

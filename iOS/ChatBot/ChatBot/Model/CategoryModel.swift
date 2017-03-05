@@ -36,7 +36,7 @@ enum CategoryType: String {
     
     func name() -> String {
         switch self {
-        case .generalInfo: return "General Information"
+        case .generalInfo: return "General"
         case .music: return "Music"
         case .books: return "Books"
         case .movies: return "Movies"

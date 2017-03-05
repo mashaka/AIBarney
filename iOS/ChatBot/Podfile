@@ -9,4 +9,5 @@ target ‘ChatBot’ do
     pod 'Hero'
     pod 'Typist'
     pod 'PubNub'
+    pod 'SwipeCellKit'
 end

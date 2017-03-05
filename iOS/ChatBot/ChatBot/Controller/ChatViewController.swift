@@ -29,6 +29,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var chat: Chat?
     
+    var usedTipId: String?
+    
     var categoriesTips: [Category]? {
         didSet {
             helpButton.isEnabled = categoriesTips != nil
@@ -44,12 +46,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.heroModifiers = [.cascade]
+        
         chat?.delegate = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44.0
-        
-        //UIHelper.createGradientOnView(view: sendButton)
         
         newMessageTextView.textContainerInset = UIEdgeInsetsMake(14.0, 15.0, 14.0, 15.0)
         newMessageTextView.delegate = self
@@ -57,7 +59,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         configureKeyboard()
         
-        API.getTips(chatId: chat!.chatId, completion: gotTipsByCategories)
+        getTips()
+        
+        navigationController?.navigationBar.heroModifiers = [.translate(x: 0.0, y: -100.0, z: 0.0)]
+        newMessageContainer.heroModifiers = [.fade, .translate(x: 0.0, y: 100.0, z: 0.0)]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,16 +77,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                                                   newMessageContainer.bounds.size.height + 6.0,
                                                   0.0)
         
-        if self.chat!.messages.count != 0 {
-            self.tableView.scrollToRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0),
-                                       at: .bottom,
-                                       animated: true)
-        }
+        scrollToBottom()
     }
     
     func configureKeyboard() {
         keyboard.on(event: .willShow) { options in
-            self.tableView.contentInset = UIEdgeInsetsMake(70.0,
+            self.tableView.contentInset = UIEdgeInsetsMake(6.0,
                                                            0.0,
                                                            options.endFrame.size.height + self.newMessageContainer.bounds.size.height + 6.0,
                                                            0.0)
@@ -94,12 +95,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             },
                            completion: nil)
             
-            self.tableView.scrollToRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0),
-                                       at: .bottom,
-                                       animated: true)
+            self.scrollToBottom()
             
         }.on(event: .willChangeFrame) { options in
-            self.tableView.contentInset = UIEdgeInsetsMake(70.0,
+            self.tableView.contentInset = UIEdgeInsetsMake(6.0,
                                                            0.0,
                                                            options.endFrame.size.height + self.newMessageContainer.bounds.size.height + 6.0,
                                                            0.0)
@@ -112,7 +111,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             },
                            completion: nil)
         }.on(event: .willHide) { options in
-            self.tableView.contentInset = UIEdgeInsetsMake(70.0,
+            self.tableView.contentInset = UIEdgeInsetsMake(6.0,
                                                            0.0,
                                                            self.newMessageContainer.bounds.size.height + 6.0,
                                                            0.0)
@@ -144,6 +143,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatMessageCell", for: indexPath) as! ChatMessageTableViewCell
             cell.message = chat!.messages[indexPath.row]
             
+            cell.heroModifiers = [.fade, .scale(0.5)]
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatMyMessageCell", for: indexPath) as! ChatMyMessageTableViewCell
@@ -154,6 +155,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 cell.isSending = false
             }
+            
+            cell.heroModifiers = [.fade, .scale(0.5)]
             
             return cell
         }
@@ -167,6 +170,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             sendButton.isEnabled = false
         }
+        
+        textView.isScrollEnabled = textView.text.characters.count > 50
     }
     
     @IBAction func onSend(_ sender: Any) {
@@ -174,7 +179,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let newMessage = Message(text: newMessageTextView.text)
         newMessageTextView.text = ""
         
-        API.sendMessage(chatId: chat!.chatId, message: newMessage, completion: messageSent)
+        API.sendMessage(chatId: chat!.chatId, message: newMessage, algoId: usedTipId, completion: messageSent)
         
         chat!.messages.append(newMessage)
         tableView.beginUpdates()
@@ -182,14 +187,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.endUpdates()
         let cell = tableView.cellForRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0))
         cell?.layoutSubviews()
-        self.tableView.scrollToRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0),
-                                   at: .bottom,
-                                   animated: true)
+        scrollToBottom()
     }
     
     @IBAction func onHelp(_ sender: Any) {
+        performSegue(withIdentifier: "toCategory", sender: nil)
     }
-    
     
     // -----------------------------------
     
@@ -197,6 +200,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if isSucces {
             let cell = tableView.cellForRow(at: IndexPath(row: chat!.messages.count - 1, section: 0)) as! ChatMyMessageTableViewCell
             cell.isSending = false
+            
+            chat!.lastMessage = chat!.messages.last!
         } else {
             chat!.messages.removeLast()
             tableView.beginUpdates()
@@ -204,12 +209,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.endUpdates()
             let cell = tableView.cellForRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0))
             cell?.layoutSubviews()
-            self.tableView.scrollToRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0),
-                                       at: .bottom,
-                                       animated: true)
+            scrollToBottom()
         }
         
         newMessageContainer.isUserInteractionEnabled = true
+        
+        usedTipId = nil
+        perform(#selector(getTips), with: nil, afterDelay: 1.0)
     }
     
     // -----------------------------------
@@ -218,18 +224,40 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .bottom)
         tableView.endUpdates()
-        self.tableView.scrollToRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0),
-                                   at: .bottom,
-                                   animated: true)
+        
+        scrollToBottom()
+        getTips()
     }
     
     // -----------------------------------
+    
+    func getTips() {
+        categoriesTips = nil
+        API.getTips(chatId: chat!.chatId, completion: gotTipsByCategories)
+    }
     
     func gotTipsByCategories(json: JSON) -> () {
         categoriesTips = []
         
         for categoryJson in json.arrayValue {
             categoriesTips?.append(Category(json: categoryJson))
+        }
+    }
+    
+    // -----------------------------------
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCategory" {
+            ((segue.destination as! UINavigationController).viewControllers[0] as! CategoryGridController).categories = categoriesTips!
+            ((segue.destination as! UINavigationController).viewControllers[0] as! CategoryGridController).chatId = chat!.chatId
+        }
+    }
+    
+    func scrollToBottom() {
+        if self.chat!.messages.count != 0 {
+            self.tableView.scrollToRow(at: IndexPath(row: self.chat!.messages.count - 1, section: 0),
+                                       at: .bottom,
+                                       animated: true)
         }
     }
 }

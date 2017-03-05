@@ -54,16 +54,44 @@ class API {
         }
     }
     
-    static func sendMessage(chatId: String, message: Message, completion: @escaping (Bool) -> ()) {
+    static func sendMessage(chatId: String, message: Message, algoId: String? = nil, completion: @escaping (Bool) -> ()) {
         let sendMessageUrl = URL(string: String(format: "http://ryadom.me/api/chat/%@/messages/", chatId))!
         
         Alamofire.request(sendMessageUrl,
                           method: .post,
-                          parameters: message.apiParams(),
+                          parameters: message.apiParams(algoId: algoId),
                           headers: AuthHelper.authHeader()).validate().responseJSON { response in
                             switch response.result {
                             case .success(_): completion(true)
                             case .failure(_): completion(false); print(API.error(response: response))
+                            }
+        }
+    }
+    
+    static func deleteTip(chatId: String, algoId: String) {
+        let sendMessageUrl = URL(string: String(format: "http://ryadom.me/api/chat/%@/tips/%@/delete/", chatId, algoId))!
+        
+        Alamofire.request(sendMessageUrl,
+                          method: .post,
+                          parameters: nil,
+                          headers: AuthHelper.authHeader()).validate().responseJSON { response in
+                            switch response.result {
+                            case .success(_): return
+                            case .failure(_): print(API.error(response: response))
+                            }
+        }
+    }
+    
+    static func startChat(userId: String, completion: @escaping (Bool) -> ()) {
+        let sendMessageUrl = URL(string: String(format: "http://ryadom.me/api/chat/start/%@/", userId))!
+        
+        Alamofire.request(sendMessageUrl,
+                          method: .post,
+                          parameters: nil,
+                          headers: AuthHelper.authHeader()).validate().responseJSON { response in
+                            switch response.result {
+                            case .success(_): completion(true)
+                            case .failure(_): completion(false) ; print(API.error(response: response))
                             }
         }
     }

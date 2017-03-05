@@ -41,9 +41,9 @@ struct AuthData {
 class AuthHelper {
     static let shared: AuthHelper = AuthHelper()
     
-    static var isAuthorized: Bool = {
+    static var isAuthorized: Bool {
         return AuthData.shared.token != nil
-    }()
+    }
     
     static func authHeader() -> [String: String] {
         return ["Authorization": "Token \(AuthData.shared.token!)"]

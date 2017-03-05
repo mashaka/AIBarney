@@ -18,7 +18,11 @@ class ChatTableViewCell: UITableViewCell {
             fullNameLabel.text = chat!.partner.firstname + " " + chat!.partner.lastname
             UIHelper.shared.downloadAndSetImage(imageView: avatarImageView, imageUrl: chat?.partner.avatarUrl)
             
-            lastMessageText.text = chat?.lastMessage?.text
+            if chat!.lastMessage != nil {
+                lastMessageText.text = chat?.lastMessage?.text
+            } else {
+                lastMessageText.text = "no messages yet"
+            }
         }
     }
 }

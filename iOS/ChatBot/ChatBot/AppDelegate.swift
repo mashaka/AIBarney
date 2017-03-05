@@ -16,10 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UIHelper.shared.setNavBarAppearance()
-        
-        //API.getHistory(chatId: "1")
-        //API.sendMessage(chatId: "1", message: Message(text: "Еби коней", date: Date(), author: User.mockUser))
-        //API.getUserList()
+        window?.backgroundColor = UIColor.white
         
         return true
     }
@@ -27,7 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         if url.scheme == "chatbot" {
             if AuthData.shared.setFromQuery(query: url.query!) {
-                Router.getTopMostVisibleController().dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    Router.getTopMostVisibleController().dismiss(animated: true, completion: {
+                        let chat = Router.getTopMostVisibleController() as! ChatListController
+                        chat.updateAll()
+                    })
+                }
             }
         }
         return true

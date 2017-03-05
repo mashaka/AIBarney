@@ -22,6 +22,12 @@
 		1127D2AD1E6B931F000A2FDB /* TipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2AC1E6B931F000A2FDB /* TipModel.swift */; };
 		1127D2AF1E6B9E2A000A2FDB /* CategoryGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2AE1E6B9E2A000A2FDB /* CategoryGridController.swift */; };
 		1127D2B11E6B9EAA000A2FDB /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2B01E6B9EAA000A2FDB /* CategoryCollectionViewCell.swift */; };
+		1127D2B31E6BADC8000A2FDB /* SingleCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2B21E6BADC8000A2FDB /* SingleCategoryController.swift */; };
+		1127D2B51E6BAE9C000A2FDB /* IntersectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2B41E6BAE9C000A2FDB /* IntersectionTableViewCell.swift */; };
+		1127D2B81E6BB210000A2FDB /* ColorTypeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2B61E6BB210000A2FDB /* ColorTypeHeaderView.swift */; };
+		1127D2B91E6BB210000A2FDB /* ColorTypeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1127D2B71E6BB210000A2FDB /* ColorTypeHeaderView.xib */; };
+		1127D2BB1E6BB94A000A2FDB /* TipMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2BA1E6BB94A000A2FDB /* TipMessageTableViewCell.swift */; };
+		1127D2BD1E6BB9B1000A2FDB /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127D2BC1E6BB9B1000A2FDB /* TipViewController.swift */; };
 		11D641121E6AAA7600CC0A23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D641111E6AAA7600CC0A23 /* AppDelegate.swift */; };
 		11D641171E6AAA7600CC0A23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D641151E6AAA7600CC0A23 /* Main.storyboard */; };
 		11D641191E6AAA7600CC0A23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D641181E6AAA7600CC0A23 /* Assets.xcassets */; };
@@ -73,6 +79,12 @@
 		1127D2AC1E6B931F000A2FDB /* TipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipModel.swift; path = Model/TipModel.swift; sourceTree = "<group>"; };
 		1127D2AE1E6B9E2A000A2FDB /* CategoryGridController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryGridController.swift; path = Controller/CategoryGridController.swift; sourceTree = "<group>"; };
 		1127D2B01E6B9EAA000A2FDB /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCollectionViewCell.swift; path = View/CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		1127D2B21E6BADC8000A2FDB /* SingleCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCategoryController.swift; path = Controller/SingleCategoryController.swift; sourceTree = "<group>"; };
+		1127D2B41E6BAE9C000A2FDB /* IntersectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntersectionTableViewCell.swift; path = View/IntersectionTableViewCell.swift; sourceTree = "<group>"; };
+		1127D2B61E6BB210000A2FDB /* ColorTypeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorTypeHeaderView.swift; path = View/ColorTypeHeaderView.swift; sourceTree = "<group>"; };
+		1127D2B71E6BB210000A2FDB /* ColorTypeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ColorTypeHeaderView.xib; path = View/ColorTypeHeaderView.xib; sourceTree = "<group>"; };
+		1127D2BA1E6BB94A000A2FDB /* TipMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipMessageTableViewCell.swift; path = View/TipMessageTableViewCell.swift; sourceTree = "<group>"; };
+		1127D2BC1E6BB9B1000A2FDB /* TipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipViewController.swift; path = Controller/TipViewController.swift; sourceTree = "<group>"; };
 		11D6410E1E6AAA7600CC0A23 /* ChatBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11D641111E6AAA7600CC0A23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11D641161E6AAA7600CC0A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -215,9 +227,13 @@
 		11D641261E6AAAB200CC0A23 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1127D2B61E6BB210000A2FDB /* ColorTypeHeaderView.swift */,
+				1127D2B71E6BB210000A2FDB /* ColorTypeHeaderView.xib */,
 				1127D2A31E6B3B5F000A2FDB /* Chat */,
 				1127D2A41E6B3B65000A2FDB /* Pre Chat */,
 				1127D2B01E6B9EAA000A2FDB /* CategoryCollectionViewCell.swift */,
+				1127D2B41E6BAE9C000A2FDB /* IntersectionTableViewCell.swift */,
+				1127D2BA1E6BB94A000A2FDB /* TipMessageTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -230,6 +246,8 @@
 				11D641601E6AD02100CC0A23 /* ChoseUserController.swift */,
 				1127D29B1E6B3538000A2FDB /* ChatViewController.swift */,
 				1127D2AE1E6B9E2A000A2FDB /* CategoryGridController.swift */,
+				1127D2B21E6BADC8000A2FDB /* SingleCategoryController.swift */,
+				1127D2BC1E6BB9B1000A2FDB /* TipViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -379,6 +397,7 @@
 				11D6411C1E6AAA7600CC0A23 /* LaunchScreen.storyboard in Resources */,
 				11D6414E1E6AB2E000CC0A23 /* Lato-SemiboldItalic.ttf in Resources */,
 				11D6414C1E6AB2E000CC0A23 /* Lato-MediumItalic.ttf in Resources */,
+				1127D2B91E6BB210000A2FDB /* ColorTypeHeaderView.xib in Resources */,
 				11D641381E6AB1DB00CC0A23 /* Lato-BlackItalic.ttf in Resources */,
 				11D641191E6AAA7600CC0A23 /* Assets.xcassets in Resources */,
 				11D6413F1E6AB1DB00CC0A23 /* Lato-LightItalic.ttf in Resources */,
@@ -463,7 +482,10 @@
 				11D6412B1E6AAE9700CC0A23 /* UIHelper.swift in Sources */,
 				11D641611E6AD02100CC0A23 /* ChoseUserController.swift in Sources */,
 				1127D29A1E6B2F08000A2FDB /* Router.swift in Sources */,
+				1127D2BB1E6BB94A000A2FDB /* TipMessageTableViewCell.swift in Sources */,
 				1127D2AD1E6B931F000A2FDB /* TipModel.swift in Sources */,
+				1127D2B31E6BADC8000A2FDB /* SingleCategoryController.swift in Sources */,
+				1127D2B51E6BAE9C000A2FDB /* IntersectionTableViewCell.swift in Sources */,
 				1127D2921E6B014A000A2FDB /* MessageModel.swift in Sources */,
 				1127D2AF1E6B9E2A000A2FDB /* CategoryGridController.swift in Sources */,
 				11D6415B1E6ABEE500CC0A23 /* ChatListController.swift in Sources */,
@@ -472,7 +494,9 @@
 				11D641591E6ABC7900CC0A23 /* UserModel.swift in Sources */,
 				11D641531E6ABB8800CC0A23 /* ChatListModel.swift in Sources */,
 				1127D2981E6B269A000A2FDB /* ChatTableViewCell.swift in Sources */,
+				1127D2B81E6BB210000A2FDB /* ColorTypeHeaderView.swift in Sources */,
 				1127D2941E6B1507000A2FDB /* ChoseUserTableViewCell.swift in Sources */,
+				1127D2BD1E6BB9B1000A2FDB /* TipViewController.swift in Sources */,
 				11D6415F1E6AC2E500CC0A23 /* AuthHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
