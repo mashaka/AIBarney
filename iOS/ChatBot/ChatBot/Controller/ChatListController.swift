@@ -7,40 +7,84 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ChatListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var plusContainerView: UIView!
+    
+    let refreshControl: UIRefreshControl = UIRefreshControl()
+    var chatListModel: ChatListModel = ChatListModel()
     
     // -----------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !AuthHelper.shared.isAuthorized {
+        if !AuthHelper.isAuthorized {
             present(UIHelper.createAuthController(), animated: false, completion: nil)
+        } else {
+            updateAll()
         }
         
         uiSetup()
     }
     
     func uiSetup() {
-        UIHelper.createGradientOnView(view: plusContainerView, cornerRadius: 35.0)
+        //UIHelper.createGradientOnView(view: plusContainerView, cornerRadius: 35.0)
         UIHelper.createColoredShadowOnView(view: plusContainerView)
+        
+        refreshControl.tintColor = UIHelper.pinkColor
+        refreshControl.addTarget(self, action: #selector(updateAll), for: .valueChanged)
+        
+        tableView.refreshControl = refreshControl
+    }
+    
+    // -----------------------------------
+    
+    func updateAll() {
+        API.getUserList(completion: onChatListLoaded)
+    }
+    
+    func onChatListLoaded(json: JSON) -> () {
+        refreshControl.endRefreshing()
+        chatListModel.setupWith(json: json)
+        tableView.reloadData()
     }
     
     // -----------------------------------
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return AuthHelper.shared.isAuthorized ? 0 : 0
+        return AuthHelper.isAuthorized ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return chatListModel.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTableViewCell
+        
+        cell.chat = chatListModel.list[indexPath.row]
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "toChat", sender: indexPath)
+    }
+    
+    // -----------------------------------
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toChat" {
+            let indexPath = sender as! IndexPath
+            let chatController = segue.destination as! ChatViewController
+            chatController.chat = chatListModel.list[indexPath.row]
+        }
     }
     
     // -----------------------------------

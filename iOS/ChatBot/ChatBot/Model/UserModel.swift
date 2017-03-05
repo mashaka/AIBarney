@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct User {
     var id: String
@@ -23,4 +24,15 @@ struct User {
         self.firstname = firstname
         self.lastname  = lastname
     }
+    
+    init(json: JSON) {
+        self.id = json["id"].stringValue
+        self.avatarUrl = URL(string: json["avatar_url"].stringValue)
+        self.firstname = json["first_name"].stringValue
+        self.lastname = json["last_name"].stringValue
+    }
+    
+    static var mockUser: User = {
+        return User(id: "1", avatarUrl: URL(string: "empty"), firstname: "Alexey", lastname: "Zhuravlev")
+    }()
 }

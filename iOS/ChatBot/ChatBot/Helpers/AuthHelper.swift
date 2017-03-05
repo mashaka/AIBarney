@@ -41,17 +41,16 @@ struct AuthData {
 class AuthHelper {
     static let shared: AuthHelper = AuthHelper()
     
-    var isAuthorized: Bool = {
+    static var isAuthorized: Bool = {
         return AuthData.shared.token != nil
     }()
     
-    var getAuthHeader() -> [String: String] {
-    
+    static func authHeader() -> [String: String] {
+        return ["Authorization": "Token \(AuthData.shared.token!)"]
     }
     
-    let fbLoginURL: URL = URL(string: "http://ryadom.me/oauth/login/facebook/")!
-    
-    func loginToFacebook() {
+    static func loginToFacebook() {
+        let fbLoginURL: URL = URL(string: "http://ryadom.me/oauth/login/facebook/")!
         UIApplication.shared.open(fbLoginURL, options: [:], completionHandler: nil)
     }
 }
