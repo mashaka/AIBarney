@@ -5,6 +5,7 @@ import random
 from datetime import datetime
 from .content import Content, ContentType
 from enum import Enum, unique
+from .tools import UpdateType
 
 
 def performerTipString(data, tipBegin, tipEnd):
