@@ -84,7 +84,9 @@ class MusicProccessor:
 
         self.lastTipId = -1
 
-    def process(self):
+        self.process1()
+
+    def process1(self):
 
         if self.music_confidence == 0:
             return []
@@ -186,12 +188,16 @@ class MusicProccessor:
                         Content( ContentType.IMAGE_URL, firstUrl ), 
                         Content( ContentType.IMAGE_URL, secondUrl ) ), 
                         [ tip ] ) )
-        return intersections
+        self.inters = intersections
+
+    def process(self):
+        return self.inters
 
     def update(self, data, nlpInfo):
         print( self.idToType )
         if UpdateType.DELETE_TIP == data.type:
             id = data.tip_id
+            print( "Delete " + str( id ) )
             tp = self.idToType[id]
             if tp == QuestionType.GENERAL_MUSIC_QUESTION or tp == QuestionType.SPECIFIC_GENERAL_QUESTION:
                 self.abusiveLoveToMusicsDefaultWeight = 0.0
@@ -227,3 +233,5 @@ class MusicProccessor:
             pass
         elif UpdateType.OUTCOME_TIP_MSG == data.type:
             self.lastTipId = data.tip_id
+
+        self.process1()
