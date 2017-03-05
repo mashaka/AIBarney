@@ -197,13 +197,14 @@ class MusicProccessor:
         print( self.idToType )
         if UpdateType.DELETE_TIP == data.type:
             id = data.tip_id
-            print( "Delete " + str( id ) )
-            tp = self.idToType[id]
-            if tp == QuestionType.GENERAL_MUSIC_QUESTION or tp == QuestionType.SPECIFIC_GENERAL_QUESTION:
-                self.abusiveLoveToMusicsDefaultWeight = 0.0
-            else:
-                performer = self.idToPerformer[id]
-                self.performersWeights[performer] = 0.0
+            if id in self.idToType:
+                print( "Delete " + str( id ) )
+                tp = self.idToType[id]
+                if tp == QuestionType.GENERAL_MUSIC_QUESTION or tp == QuestionType.SPECIFIC_GENERAL_QUESTION:
+                    self.abusiveLoveToMusicsDefaultWeight = 0.0
+                else:
+                    performer = self.idToPerformer[id]
+                    self.performersWeights[performer] = 0.0
         elif UpdateType.INCOME_MSG == data.type:
             flag = nlpInfo.is_positive
             print( self.performersWeights )
