@@ -214,7 +214,7 @@ class MusicProccessor:
             if data.msg == "No":
                 flag = False
             print(self.lastTipId)
-            if self.lastTipId != -1:
+            if self.lastTipId != -1 and self.lastTipId in self.idToType:
                 tp = self.idToType[self.lastTipId]
                 if tp == QuestionType.GENERAL_MUSIC_QUESTION:
                     if flag == True:
