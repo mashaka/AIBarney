@@ -23,7 +23,6 @@ class ChatRoom:
         self.categories = []
         for category_data in data:
             self.categories.append(Category(category_data))
-        # TODO: calculate categories weights
 
     def update(self, data: UpdateInfo):
         # TODO: add some NLP here

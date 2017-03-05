@@ -5,6 +5,7 @@
 
 from enum import Enum, unique
 
+
 @unique
 class ContentType(Enum):
     STRING = 1,
@@ -25,5 +26,5 @@ class Content:
         if ContentType.STRING is self.type or ContentType.IMAGE_URL is self.type:
             output_dict['data'] = self.data
         else:
-            raise ValueError('{}: Unsupported type {} \
-                in serialization'.format(self.TAG, self.type.name))
+            raise ValueError('{}: Unsupported type {} in serialization'.format(
+                self.TAG, self.type.name))
