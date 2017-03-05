@@ -135,6 +135,7 @@ class MusicProccessor:
             self.idToPerformer[tip2.id] = id
 
             event = findNearestEvent( data )
+            print(event)
             tipsList = [ tip1, tip2 ]
 
             if self.performersWeights[id] > 0.6 and event:
@@ -157,6 +158,8 @@ class MusicProccessor:
                 
             intersections.append( Intersection( performerTipString( data, "Like music of", "" ), 
                 suggestCommonArtistWeight, ( Content( ContentType.IMAGE_URL, pictureUrl ), None), tipsList ) )
+
+            print( tipsList )
 
         for genre, performersPair in self.genreToPerformersLists.items():
             firstList = performersPair[0]
