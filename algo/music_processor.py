@@ -189,6 +189,7 @@ class MusicProccessor:
         return intersections
 
     def update(self, data, nlpInfo):
+        print( self.idToType )
         if UpdateType.DELETE_TIP == data.type:
             id = data.tip_id
             tp = self.idToType[id]
