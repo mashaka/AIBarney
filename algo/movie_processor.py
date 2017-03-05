@@ -93,7 +93,7 @@ class MovieProccessor:
                     [ Tip( movieRecomendation, 0.9 ),
                     Tip( goingToCinemaSuggestion, 0.5 )  ] ) )
 
-            return intersections
+        return intersections
 
     def update(self, updateInfo, nlpInfo):
         pass
