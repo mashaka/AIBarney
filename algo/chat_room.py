@@ -11,12 +11,16 @@ import logging
 
 from .category import Category
 from .tools import UpdateInfo, InputData, DataNLP, CategoryType, UpdateType
-from .sentiment_analysis import classify
+from .sentiment_analysis import classify, load_model
 
 # model for sentiment analysis
 sentiment_model = None
 
 module_logger = logging.getLogger('ChatRoom')
+
+def LOAD():
+    global sentiment_model
+    sentiment_model = load_model()
 
 class ChatRoom:
 
@@ -29,13 +33,14 @@ class ChatRoom:
             self.categories.append(Category(category_data))
 
     def update(self, data: UpdateInfo):
+        global sentiment_model
         is_positive = None
         if data.type is UpdateType.INCOME_MSG or \
                 data.type is UpdateType.OUTCOME_MSG or \
                 data.type is UpdateType.OUTCOME_TIP_MSG:
             if sentiment_model is None:
-                raise ValueError('{}: You should load sentiment model'.format(self.TAG))
-            is_positive = classify(data.msg)
+                sentiment_model = load_model()
+            is_positive = classify(data.msg, sentiment_model)
         for category in self.categories:
             category.update(data, DataNLP(is_positive))
 
