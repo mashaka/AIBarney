@@ -1,6 +1,6 @@
 # ChatBot
 
-*ChatBot* is an iOS app that helps people to get know each other with adaptive tips during conversation. To achieve that we intersect users's Facebook accounts. 
+**ChatBot** is an iOS app that helps people to get know each other with adaptive tips during conversation. To achieve that we intersect users's Facebook accounts. 
 
 # Algorithm keypoints
 * Sentiment analysis based on Machine Learning algorithms.
@@ -12,3 +12,9 @@ This project is a part of HackUPC 2017 Winter hackathon implemented by:
 - [mashaka](https://github.com/mashaka)
 - [AlexeyZhuravlev](https://github.com/AlexeyZhuravlev)
 - [ryad0m](https://github.com/ryad0m)
+
+# Built With
+* Algorithms: Python, sklearn
+* iOS: Swift 3, Xcode 8, Sketch
+* BackEnd: Python, Django, AWS, Facebook
+
