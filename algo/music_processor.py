@@ -227,4 +227,3 @@ class MusicProccessor:
             pass
         elif UpdateType.OUTCOME_TIP_MSG == data.type:
             self.lastTipId = data.tip_id
-            pass

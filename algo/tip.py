@@ -3,20 +3,16 @@
 # Copyright 2017
 #####
 
+id_counter = 0
 
 class Tip:
-
-    id_counter = 0
-
-    @staticmethod
-    def get_next_id():
-        Tip.id_counter += 1
-        return Tip.id_counter
 
     def __init__(self, text: str, weight: float):
         self.text = text
         self.weight = weight
-        self.id = self.get_next_id()
+        global id_counter
+        id_counter += 1
+        self.id = id_counter
 
     def serialize(self):
         output_dict = dict()
