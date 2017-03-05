@@ -37,8 +37,6 @@ class MusicProccessor:
     def __init__( self, firstData, secondData):
         firstDataList = firstData["data"]
         secondDataList = secondData["data"]
-        print(firstData)
-        print(secondData)
         firstIds = set( map( lambda x: x["id"], firstDataList ) )
         secondIds = set( map( lambda x: x["id"], secondDataList ) )
         firstGenres = set( map( lambda x: x["genre"] if "genre" in x else None, firstDataList) )
