@@ -32,7 +32,6 @@ def findNearestEvent(data):
 
 
 MINIMAL_MUSIC_LIKES = 20
-abusiveLoveToMusicsDefaultWeight = 1.0
 suggestCommonArtistWeight = 0.5
 suggestCommonGenreWeight = 0.3
 
@@ -48,6 +47,8 @@ class QuestionType(Enum):
 class MusicProccessor:
 
     def __init__( self, firstData, secondData):
+        self.music_confidence = 0.5
+        self.abusiveLoveToMusicsDefaultWeight = 0.1
         firstDataList = firstData["data"]
         secondDataList = secondData["data"]
         firstIds = set( map( lambda x: x["id"], firstDataList ) )
@@ -81,31 +82,29 @@ class MusicProccessor:
         self.idToType = dict()
         self.idToPerformer = dict()
 
-        self.musicConfidence = 0.5
-
         self.lastTipId = -1
 
     def process(self):
 
-        if self.musicConfidence == 0:
+        if self.music_confidence == 0:
             return []
 
         intersections = []
-        if abusiveLoveToMusicsDefaultWeight > 0:
+        if self.abusiveLoveToMusicsDefaultWeight > 0:
             firstTip = Tip( "I have seen a lot of likes on your facebook page. Do you actually like hearing musics?", 
-                self.musicConfidence )
+                self.abusiveLoveToMusicsDefaultWeight )
 
             self.idToType[firstTip.id] = QuestionType.GENERAL_MUSIC_QUESTION
 
 
             secondTip = Tip( "You seem to love musics, there are huge amount of likes on your facebook page. What is your favourite band?", 
-                self.musicConfidence )
+                self.abusiveLoveToMusicsDefaultWeight )
             self.idToType[secondTip.id] = QuestionType.SPECIFIC_GENERAL_QUESTION    
 
 
             if len( self.firstData ) > MINIMAL_MUSIC_LIKES and len( self.secondData ) > MINIMAL_MUSIC_LIKES:
                 intersections.append( Intersection( "Abusive love to musics", 
-                abusiveLoveToMusicsDefaultWeight, (None, None), 
+                self.abusiveLoveToMusicsDefaultWeight, (None, None), 
                 [
                     firstTip,
                     secondTip
@@ -188,7 +187,7 @@ class MusicProccessor:
             id = data.tip_id
             tp = self.idToType[self.lastTipId]
             if tp == QuestionType.GENERAL_MUSIC_QUESTION or tp == QuestionType.SPECIFIC_GENERAL_QUESTION:
-                abusiveLoveToMusicsDefaultWeight = 0.0
+                self.abusiveLoveToMusicsDefaultWeight = 0.0
             else:
                 performer = self.idToPerformer[id]
                 self.performersWeights[performer] = 0.0
@@ -198,9 +197,9 @@ class MusicProccessor:
                 tp = self.idToType[self.lastTipId]
                 if tp == QuestionType.GENERAL_MUSIC_QUESTION:
                     if flag == True:
-                        self.musicConfidence = 1.0
+                        self.music_confidence = 1.0
                     elif flag == False:
-                        self.musicConfidence = 0.0
+                        self.music_confidence = 0.0
                 if tp == QuestionType.PERFORMER_LIKING_QUESTION:
                     if flag == True:
                         self.performersWeights[ self.idToPerformer[self.lastTipId] ] = 1.0
@@ -208,7 +207,7 @@ class MusicProccessor:
                         self.performersWeights[ self.idToPerformer[self.lastTipId] ] = 0.0
 
                 if tp == QuestionType.GENERAL_MUSIC_QUESTION or tp == QuestionType.SPECIFIC_GENERAL_QUESTION:
-                    abusiveLoveToMusicsDefaultWeight = 0.0
+                    self.abusiveLoveToMusicsDefaultWeight = 0.0
 
         elif UpdateType.OUTCOME_MSG == data.type:
             pass
