@@ -11,12 +11,15 @@ import logging
 
 from .category import Category
 from .tools import UpdateInfo, InputData, DataNLP, CategoryType, UpdateType
-from .sentiment_analysis import classify
+from .sentiment_analysis import classify, load_model
 
 # model for sentiment analysis
 sentiment_model = None
 
 module_logger = logging.getLogger('ChatRoom')
+
+def LOAD():
+    sentiment_model = load_model()
 
 class ChatRoom:
 
