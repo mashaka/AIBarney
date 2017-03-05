@@ -1,144 +1,144 @@
 [
     {
+        "category_type": "BOOKS",
+        "weight": 1,
         "intersections": [
             {
                 "tips": [
                     {
-                        "text": "What do you like about book Harry Potter and the Deathly Hallows?",
                         "algo_id": 1,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book Harry Potter and the Deathly Hallows?"
                     },
                     {
-                        "text": "What do you like about book Harry Potter and the Deathly Hallows?",
                         "algo_id": 2,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book Harry Potter and the Deathly Hallows?"
                     }
                 ],
+                "description": "Like book Harry Potter and the Deathly Hallows",
                 "algo_id": 1,
-                "weight": 0.5,
-                "description": "Like book Harry Potter and the Deathly Hallows"
+                "weight": 0.5
             },
             {
                 "tips": [
                     {
-                        "text": "What do you like about book Dandelion Wine?",
                         "algo_id": 3,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book Dandelion Wine?"
                     },
                     {
-                        "text": "What do you like about book Dandelion Wine?",
                         "algo_id": 4,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book Dandelion Wine?"
                     }
                 ],
+                "description": "Like book Dandelion Wine",
                 "algo_id": 2,
-                "weight": 0.5,
-                "description": "Like book Dandelion Wine"
+                "weight": 0.5
             },
             {
                 "tips": [
                     {
-                        "text": "What do you like about book Andromeda (novel)?",
                         "algo_id": 5,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book Andromeda (novel)?"
                     },
                     {
-                        "text": "What do you like about book Andromeda (novel)?",
                         "algo_id": 6,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book Andromeda (novel)?"
                     }
                 ],
+                "description": "Like book Andromeda (novel)",
                 "algo_id": 3,
-                "weight": 0.5,
-                "description": "Like book Andromeda (novel)"
+                "weight": 0.5
             },
             {
                 "tips": [
                     {
-                        "text": "What do you like about book The Three Musketeers?",
                         "algo_id": 7,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book The Three Musketeers?"
                     },
                     {
-                        "text": "What do you like about book The Three Musketeers?",
                         "algo_id": 8,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book The Three Musketeers?"
                     }
                 ],
+                "description": "Like book The Three Musketeers",
                 "algo_id": 4,
-                "weight": 0.5,
-                "description": "Like book The Three Musketeers"
+                "weight": 0.5
             },
             {
                 "tips": [
                     {
-                        "text": "What do you like about book The Hobbit?",
                         "algo_id": 9,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book The Hobbit?"
                     },
                     {
-                        "text": "What do you like about book The Hobbit?",
                         "algo_id": 10,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book The Hobbit?"
                     }
                 ],
+                "description": "Like book The Hobbit",
                 "algo_id": 5,
-                "weight": 0.5,
-                "description": "Like book The Hobbit"
+                "weight": 0.5
             },
             {
                 "tips": [
                     {
-                        "text": "What do you like about book Artemis Fowl?",
                         "algo_id": 11,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book Artemis Fowl?"
                     },
                     {
-                        "text": "What do you like about book Artemis Fowl?",
                         "algo_id": 12,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book Artemis Fowl?"
                     }
                 ],
+                "description": "Like book Artemis Fowl",
                 "algo_id": 6,
-                "weight": 0.5,
-                "description": "Like book Artemis Fowl"
+                "weight": 0.5
             },
             {
                 "tips": [
                     {
-                        "text": "What do you like about book Harry Potter and the Half-Blood Prince?",
                         "algo_id": 13,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book Harry Potter and the Half-Blood Prince?"
                     },
                     {
-                        "text": "What do you like about book Harry Potter and the Half-Blood Prince?",
                         "algo_id": 14,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book Harry Potter and the Half-Blood Prince?"
                     }
                 ],
+                "description": "Like book Harry Potter and the Half-Blood Prince",
                 "algo_id": 7,
-                "weight": 0.5,
-                "description": "Like book Harry Potter and the Half-Blood Prince"
+                "weight": 0.5
             },
             {
                 "tips": [
                     {
-                        "text": "What do you like about book Гарри Поттер?",
                         "algo_id": 15,
-                        "weight": 0.9
+                        "weight": 0.9,
+                        "text": "What do you like about book Гарри Поттер?"
                     },
                     {
-                        "text": "What do you like about book Гарри Поттер?",
                         "algo_id": 16,
-                        "weight": 1.0
+                        "weight": 1.0,
+                        "text": "What do you like about book Гарри Поттер?"
                     }
                 ],
+                "description": "Like book Гарри Поттер",
                 "algo_id": 8,
-                "weight": 0.5,
-                "description": "Like book Гарри Поттер"
+                "weight": 0.5
             }
-        ],
-        "category_type": "BOOKS",
-        "weight": -1
+        ]
     }
 ]

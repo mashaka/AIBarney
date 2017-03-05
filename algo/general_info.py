@@ -48,7 +48,7 @@ class GeneralInfo:
             module_logger.info('Receive no info about education')
             return
         for education_0 in self.data[0][EDUCATION]:
-            for education_1 in self.data[0][EDUCATION]:
+            for education_1 in self.data[1][EDUCATION]:
                 if education_0[SCHOOL][ID] == education_1[SCHOOL][ID]:
                     self.intersections.append(
                         self.get_education_intersection((
@@ -81,7 +81,7 @@ class GeneralInfo:
             module_logger.info('Receive no info about work experience')
             return
         for work_0 in self.data[0][WORK]:
-            for work_1 in self.data[0][WORK]:
+            for work_1 in self.data[1][WORK]:
                 if work_0[EMPLOYER][ID] == work_1[EMPLOYER][ID]:
                     self.intersections.append(
                         self.get_employer_intersection((

@@ -42,5 +42,5 @@ class BookProccessor:
 
         return intersections
 
-    def update(self):
+    def update(self, updateInfo, nlpInfo):
         pass

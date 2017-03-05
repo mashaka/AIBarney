@@ -7,14 +7,14 @@ from typing import Tuple, Dict
 import logging
 
 from .general_info import GeneralInfo
+from .friends_processor import FriendsProcessor
 from .music_processor import MusicProccessor
 from .movie_processor import MovieProccessor
 from .book_processor import BookProccessor
 from .tools import UpdateInfo, InputData, DataNLP, CategoryType
 
-NOT_FOUND = -1
-
 module_logger = logging.getLogger('Category')
+
 
 class Category: 
 
@@ -42,22 +42,17 @@ class Category:
             # TODO
             pass
         elif self.type is CategoryType.FRIENDS:
-            # TODO
-            pass
+            self.processor = FriendsProcessor(data.data_0)
         elif self.type is CategoryType.SPORT:
             # TODO
             pass
         else:
             raise(ValueError('{}: Unsupported category type'.format(self.TAG)))
         self.intersections = self.processor.process()
-        # TODO: compute intersection weights
-        self.weight = NOT_FOUND
+        self.weight = 1
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
         return self.processor.update(data, dataNLP)
-
-    def set_weight(self, weight: float):
-        self.weight = weight
 
     def serialize(self) -> Dict:
         output_dict = dict()

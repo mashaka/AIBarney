@@ -83,15 +83,17 @@ class MovieProccessor:
             firstName = firstElement["name"]
             secondName = secondElement["name"]
 
-            movieRecomendation = "Looks like you like watching " + genre + " movies. You might like " + firstName
-            goingToCinemaSuggestion = "Looks like you like watching " + genre + " movies. What about going to cinema?"
+            if firstName != secondName:
+                movieRecomendation = "Looks like you like watching " + genre + " movies. You might like " + firstName
+                goingToCinemaSuggestion = "Looks like you like watching " + genre + " movies. What about going to cinema?"
 
-            intersections.append( Intersection( "Like " + genre + " movies: " + firstName + ", " + secondName, 
-                suggestCommonGenreWeight, ( Content( ContentType.IMAGE_URL, firstUrl ), Content( ContentType.IMAGE_URL, secondUrl ) ), 
-                [ Tip( movieRecomendation, 0.9 ),
-                Tip( goingToCinemaSuggestion, 0.5 )  ] ) )
+                intersections.append( Intersection( "Like " + genre + " movies: " + firstName + ", " + secondName, 
+                    suggestCommonGenreWeight, ( Content( ContentType.IMAGE_URL, firstUrl ), 
+                    Content( ContentType.IMAGE_URL, secondUrl ) ), 
+                    [ Tip( movieRecomendation, 0.9 ),
+                    Tip( goingToCinemaSuggestion, 0.5 )  ] ) )
 
             return intersections
 
-    def update(self):
+    def update(self, updateInfo, nlpInfo):
         pass
