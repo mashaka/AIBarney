@@ -185,7 +185,7 @@ class MusicProccessor:
     def update(self, data, nlpInfo):
         if UpdateType.DELETE_TIP == data.type:
             id = data.tip_id
-            tp = self.idToType[self.lastTipId]
+            tp = self.idToType[id]
             if tp == QuestionType.GENERAL_MUSIC_QUESTION or tp == QuestionType.SPECIFIC_GENERAL_QUESTION:
                 self.abusiveLoveToMusicsDefaultWeight = 0.0
             else:
