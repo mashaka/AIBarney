@@ -28,8 +28,7 @@ def download_data(user):
     fb = get_connection(user)
     data = dict()
     data['music'] = fb.get_object('me/music',
-            fields='genre,cover,events'
-                '{place,name,start_time,end_time}',
+            fields='name,genre,cover,events{place,name,start_time,end_time}',
             limit=1000)
     data['movies'] = fb.get_object('me/movies',
             fields='genre,cover,name',
@@ -37,7 +36,10 @@ def download_data(user):
     data['books'] = fb.get_object('me/books', limit=1000)
     data['general'] = fb.get_object('me',
             fields='education,hometown,languages,work')
-    UserData.objects.create(user=user, data=pickle.dumps(data))
+    ud, _ = UserData.objects.get_or_create(user=user)
+    ud.data=pickle.dumps(data)
+    ud.save()
+
 
 STOP = False
 
@@ -47,6 +49,15 @@ def build_input_data(dataa, datab):
     res.append(algo.InputData(algo.CategoryType.GENERAL_INFO,
                         dataa['general'],
                         datab['general']))
+    res.append(algo.InputData(algo.CategoryType.MUSIC,
+                        dataa['music'],
+                        datab['music']))
+    res.append(algo.InputData(algo.CategoryType.BOOKS,
+                        dataa['books'],
+                        datab['books']))
+    res.append(algo.InputData(algo.CategoryType.MOVIES,
+                        dataa['movies'],
+                        datab['movies']))
     return res
 
 def start_chat(chat):
@@ -55,10 +66,14 @@ def start_chat(chat):
     datab = pickle.loads(userb.user.userdata.data)
     chata = algo.ChatRoom(build_input_data(dataa, datab))
     chatb = algo.ChatRoom(build_input_data(datab, dataa))
-    ChatData.objects.create(user=usera.user, chat=chat,
-            data=pickle.dumps(chata))
-    ChatData.objects.create(user=userb.user, chat=chat,
-            data=pickle.dumps(chatb))
+    cda, _ = ChatData.objects.get_or_create(user=usera.user,
+                                            chat=chat)
+    cda.data=pickle.dumps(chata)
+    cda.save()
+    cdb, _ = ChatData.objects.get_or_create(user=userb.user,
+                                            chat=chat)
+    cdb.data=pickle.dumps(chatb)
+    cdb.save()
 
 def new_message(msg):
     chata = ChatData.objects.get(user=msg.author.user, chat=msg.chat)
