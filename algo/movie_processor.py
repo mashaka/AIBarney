@@ -77,7 +77,9 @@ class MovieProccessor:
         intersections = []
 
         tip1 = Tip( "Do you actually like watching movies?", 1.0 )
+        self.idToType[tip1.id] = QuestionType.GENERAL_MOVIE_QUESTION
         tip2 = Tip( "You seem to love movies. What is your favourite?", 0.9)
+        self.idToType[tip2.id] = QuestionType.SPECIFIC_GENERAL_QUESTION
         if len( self.firstData ) > MINIMAL_MOVIES_LIKES and len( self.secondData ) > MINIMAL_MOVIES_LIKES:
             intersections.append( Intersection( "Like watching movies",
                 abusiveLoveToMovieDefaultWeight, (None, None), [ tip1, tip2 ] ) )
@@ -116,7 +118,7 @@ class MovieProccessor:
 
         return intersections
 
-    def update(self, updateInfo, nlpInfo):
+    def update(self, data, nlpInfo):
         if UpdateType.DELETE_TIP == data.type:
             id = data.tip_id
             pass
