@@ -25,11 +25,12 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class MessageSerializer(serializers.ModelSerializer):
     author = serializers.SerializerMethodField(method_name='get_mauthor')
+    used_tip = serializers.CharField(write_only=True, required=False, allow_null=True)
     def get_mauthor(self, post):
         return ProfileSerializer(**{'context': self.context}).to_representation(post.author)
     class Meta:
         model = Message
-        fields = ('id', 'author', 'text', 'add_time')
+        fields = ('id', 'author', 'text', 'add_time', 'used_tip')
 
 class ChatSerializer(serializers.ModelSerializer):
     last_message = serializers.SerializerMethodField(method_name='mget_last_message')

@@ -26,8 +26,15 @@ class MessageList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         chat = get_object_or_404(Chat, id=self.kwargs['chat_id'])
         profile = self.request.user.profile
+        print(serializer.validated_data)
+        used_tip = serializer.validated_data.get('used_tip', None)
+        try:
+            serializer.validated_data.pop('used_tip')
+        except:
+            pass
         instance = serializer.save(author=profile, chat=chat)
-        Queue.objects.create(type='message', args=str(instance.id))
+        Queue.objects.create(type='message',
+                args=str(instance.id) + '_' + str(used_tip))
         user_to = [p.user.id for p in chat.users.all() if p.id != profile.id][0]
         channel = str(user_to) + '_' + str(chat.id)
         msg = serializer.to_representation(instance)
@@ -88,3 +95,13 @@ class ChatTips(APIView):
                             chat=chat, user=request.user).data)
         tips = room.get_tips()
         return Response(tips)
+
+
+class DeleteTip(APIView):
+    def post(self, request, chat_id, tip_id, format=None):
+        chat_data = get_object_or_404(ChatData, user=request.user,
+                chat_id=int(chat_id))
+        Queue.objects.create(type='delete_tip',
+                args=str(chat_data.id) + '_' + tip_id)
+        return Response()
+

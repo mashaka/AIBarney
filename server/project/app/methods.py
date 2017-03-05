@@ -7,9 +7,14 @@ import algo
 import facebook
 facebook.VALID_API_VERSIONS = ['2.8']
 
+
 def get_token(user):
     return (user.social_auth.get(provider='facebook').
             extra_data['access_token'])
+
+def get_fb_id(user):
+    return (user.social_auth.get(provider='facebook').
+            extra_data['id'])
 
 def get_connection(user):
     return facebook.GraphAPI(access_token=get_token(user),
@@ -22,6 +27,10 @@ def prepare_user(user):
         profile.avatar_url = get_connection(user).get_object(
                 'me/picture', height=160)['url']
         profile.save()
+
+def mutual_friends(usera, userb):
+    return get_connection(usera).get_object(get_fb_id(userb),
+            fields='context')['context']['mutual_friends']
 
 
 def download_data(user):
@@ -64,8 +73,14 @@ def start_chat(chat):
     usera, userb = chat.users.all()[:]
     dataa = pickle.loads(usera.user.userdata.data)
     datab = pickle.loads(userb.user.userdata.data)
-    chata = algo.ChatRoom(build_input_data(dataa, datab))
-    chatb = algo.ChatRoom(build_input_data(datab, dataa))
+    buildeda = build_input_data(dataa, datab)
+    buildedb = build_input_data(datab, dataa)
+    buildeda.append(algo.InputData(algo.CategoryType.FRIENDS,
+                    mutual_friends(usera.user, userb.user), None))
+    buildedb.append(algo.InputData(algo.CategoryType.FRIENDS,
+                    mutual_friends(userb.user, usera.user), None))
+    chata = algo.ChatRoom(buildeda)
+    chatb = algo.ChatRoom(buildedb)
     cda, _ = ChatData.objects.get_or_create(user=usera.user,
                                             chat=chat)
     cda.data=pickle.dumps(chata)
@@ -75,15 +90,23 @@ def start_chat(chat):
     cdb.data=pickle.dumps(chatb)
     cdb.save()
 
-def new_message(msg):
+def new_message(msg, tip):
     chata = ChatData.objects.get(user=msg.author.user, chat=msg.chat)
     userb = msg.chat.users.all().exclude(
             user=msg.author.user).first().user
     chatb = ChatData.objects.get(user=userb, chat=msg.chat)
     rooma = pickle.loads(chata.data)
     roomb = pickle.loads(chatb.data)
-    rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_MSG,
+    print('start if')
+    if tip is None:
+        print('sending no tip')
+        rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_MSG,
                                 msg.text))
+    else:
+        print('sending tip')
+        rooma.update(algo.UpdateInfo(algo.UpdateType.OUTCOME_TIP_MSG,
+                                msg.text, tip))
+    print('end if')
     roomb.update(algo.UpdateInfo(algo.UpdateType.INCOME_MSG,
                                 msg.text))
     chata.data = pickle.dumps(rooma)
@@ -91,13 +114,28 @@ def new_message(msg):
     chatb.data = pickle.dumps(roomb)
     chatb.save()
 
+def delete_tip(chatdata, tip_id):
+    data = pickle.loads(chatdata.data)
+    data.update(algo.UpdateInfo(
+        algo.UpdateType.DELETE_TIP, None, tip_id))
+    chatdata.data = pickle.dumps(data)
+    chatdata.save()
+
 def process_queue_item(job):
     if job.type == 'fetch':
         download_data(User.objects.get(id=int(job.args)))
     elif job.type == 'start_chat':
         start_chat(Chat.objects.get(id=int(job.args)))
     elif job.type == 'message':
-        new_message(Message.objects.get(id=int(job.args)))
+        msg, tip = job.args.split('_')
+        if tip == 'None':
+            tip = None
+        else:
+            tip = int(tip)
+        new_message(Message.objects.get(id=int(msg)), tip)
+    elif job.type == 'delete_tip':
+        cd, tip_id = job.args.split('_')
+        delete_tip(ChatData.objects.get(id=int(cd)), int(tip_id))
     else:
         raise Exception('Unknown job type ' + job.type)
     job.done = True
@@ -107,6 +145,7 @@ def stop_processing():
     STOP = True
 
 def process_queue(cnt=Decimal('Infinity')):
+    algo.LOAD()
     while not STOP and cnt > 0:
         sz = Queue.objects.filter(done=False).count()
         print('Queue size:', sz)

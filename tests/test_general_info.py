@@ -8,7 +8,7 @@ import os
 import json
 
 from algo.general_info import GeneralInfo
-from algo import ChatRoom, CategoryType, InputData
+from algo import ChatRoom, CategoryType, InputData, UpdateInfo, UpdateType
 
 WORKING_DIR = os.path.dirname(__file__)
 TEST_DIR = os.path.join(WORKING_DIR, 'data')
@@ -16,6 +16,7 @@ TEST_JSON = os.path.join(TEST_DIR, 'general_info.json')
 TEST_JSON_FRIENDS = os.path.join(TEST_DIR, 'friends.json')
 OUTPUT_DIR = os.path.join(WORKING_DIR, 'output')
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, 'general_info_output.json')
+UPDATED_OUTPUT_FILE = os.path.join(OUTPUT_DIR, 'update_general_info_output.json')
 OUTPUT_FILE_FRIENDS = os.path.join(OUTPUT_DIR, 'friends_output.json')
 MUSIC_JSON = os.path.join(TEST_DIR, 'music_info.json')
 MUSIC_OUTPUT_FILE = os.path.join(OUTPUT_DIR, 'music_info_output.json')
@@ -45,10 +46,13 @@ class GeneralInfoTestSuite(unittest.TestCase):
             data
         ))
         chat_room = ChatRoom(self.input_data)
-        output_dict =  chat_room.get_tips()
+        output_dict = chat_room.get_tips()
         with open(OUTPUT_FILE, mode='w', encoding='utf8') as f:
             json.dump(output_dict, f, indent=4, ensure_ascii=False)
-
+        chat_room.update(UpdateInfo(UpdateType.DELETE_TIP, tip_id=28))
+        output_dict = chat_room.get_tips()
+        with open(UPDATED_OUTPUT_FILE, mode='w', encoding='utf8') as f:
+            json.dump(output_dict, f, indent=4, ensure_ascii=False)
 
     def test_friends(self):
         with open(TEST_JSON_FRIENDS, encoding='utf8') as f:

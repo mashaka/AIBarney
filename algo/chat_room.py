@@ -10,9 +10,17 @@ import json
 import logging
 
 from .category import Category
-from .tools import UpdateInfo, InputData, DataNLP, CategoryType
+from .tools import UpdateInfo, InputData, DataNLP, CategoryType, UpdateType
+from .sentiment_analysis import classify, load_model
+
+# model for sentiment analysis
+sentiment_model = None
 
 module_logger = logging.getLogger('ChatRoom')
+
+def LOAD():
+    global sentiment_model
+    sentiment_model = load_model()
 
 class ChatRoom:
 
@@ -25,13 +33,21 @@ class ChatRoom:
             self.categories.append(Category(category_data))
 
     def update(self, data: UpdateInfo):
-        # TODO: add some NLP here
+        global sentiment_model
+        is_positive = None
+        if data.type is UpdateType.INCOME_MSG or \
+                data.type is UpdateType.OUTCOME_MSG or \
+                data.type is UpdateType.OUTCOME_TIP_MSG:
+            if sentiment_model is None:
+                sentiment_model = load_model()
+            is_positive = classify(data.msg, sentiment_model)
         for category in self.categories:
-            category.update(data, DataNLP())
+            category.update(data, DataNLP(is_positive))
 
     def get_tips(self) -> Dict[CategoryType, Category]:
         output_list = []
         for category in self.categories:
-            output_list.append(category.serialize())
+            if( len( category.intersections ) > 0 ):
+                output_list.append(category.serialize())
         return output_list
 

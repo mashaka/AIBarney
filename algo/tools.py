@@ -26,7 +26,6 @@ class InputData:
         self.data_0 = data_0
         self.data_1 = data_1
 
-
 @unique
 class UpdateType(Enum):
     INCOME_MSG = 1
@@ -64,6 +63,5 @@ class UpdateInfo:
 
 class DataNLP:
 
-    def __init__(self):
-        # TODO: place for smth interesting :)
-        pass
+    def __init__(self, is_positive):
+        self.is_positive = is_positive
