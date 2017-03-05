@@ -52,7 +52,8 @@ class Category:
         self.weight = 1
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
-        return self.processor.update(data, dataNLP)
+        self.processor.update(data, dataNLP)
+        self.intersections = self.processor.process()
 
     def serialize(self) -> Dict:
         output_dict = dict()
