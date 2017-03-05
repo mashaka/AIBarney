@@ -53,7 +53,8 @@ class Category:
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
         self.processor.update(data, dataNLP)
-        self.intersections = self.processor.process()
+        if self.type is not CategoryType.GENERAL_INFO and self.type is not CategoryType.FRIENDS:
+            self.intersections = self.processor.process()
         print( self.intersections )
 
     def serialize(self) -> Dict:
