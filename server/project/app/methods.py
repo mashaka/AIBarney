@@ -107,7 +107,7 @@ def process_queue_item(job):
         new_message(Message.objects.get(id=int(job.args)))
     elif job.type == 'delete_tip':
         cd, tip_id = job.args.split('_')
-        delete_tip(ChatData.objects.get(id=int(cd)), tip_id)
+        delete_tip(ChatData.objects.get(id=int(cd)), int(tip_id))
     else:
         raise Exception('Unknown job type ' + job.type)
     job.done = True
