@@ -40,7 +40,7 @@ class ChatRoom:
                 data.type is UpdateType.OUTCOME_TIP_MSG:
             if sentiment_model is None:
                 sentiment_model = load_model()
-            is_positive = classify(data.msg)
+            is_positive = classify(sentiment_model, data.msg)
         for category in self.categories:
             category.update(data, DataNLP(is_positive))
 
