@@ -28,8 +28,7 @@ def download_data(user):
     fb = get_connection(user)
     data = dict()
     data['music'] = fb.get_object('me/music',
-            fields='genre,cover,events'
-                '{place,name,start_time,end_time}',
+            fields='name,genre,cover,events{place,name,start_time,end_time}',
             limit=1000)
     data['movies'] = fb.get_object('me/movies',
             fields='genre,cover,name',
