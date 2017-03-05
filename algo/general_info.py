@@ -154,7 +154,7 @@ class GeneralInfo:
         return Intersection(desc, weight, content, tips)
 
     def update(self, data: UpdateInfo, dataNLP: DataNLP):
-        if UpdateType.DELETE_TIP == data.type:
+        if UpdateType.DELETE_TIP == data.type or UpdateType.OUTCOME_TIP_MSG == data.type:
             self.filter_tip(data.tip_id)
 
     def filter_tip(self, tip_id: int):
