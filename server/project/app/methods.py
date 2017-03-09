@@ -75,10 +75,13 @@ def start_chat(chat):
     datab = pickle.loads(userb.user.userdata.data)
     buildeda = build_input_data(dataa, datab)
     buildedb = build_input_data(datab, dataa)
-    buildeda.append(algo.InputData(algo.CategoryType.FRIENDS,
+    try:
+        buildeda.append(algo.InputData(algo.CategoryType.FRIENDS,
                     mutual_friends(usera.user, userb.user), None))
-    buildedb.append(algo.InputData(algo.CategoryType.FRIENDS,
+        buildedb.append(algo.InputData(algo.CategoryType.FRIENDS,
                     mutual_friends(userb.user, usera.user), None))
+    except:
+        pass
     chata = algo.ChatRoom(buildeda)
     chatb = algo.ChatRoom(buildedb)
     cda, _ = ChatData.objects.get_or_create(user=usera.user,
