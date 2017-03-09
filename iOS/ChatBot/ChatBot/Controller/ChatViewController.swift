@@ -31,11 +31,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var usedTipId: String?
     
-    var categoriesTips: [Category]? {
-        didSet {
-            helpButton.isEnabled = categoriesTips != nil
-        }
-    }
+    var categoriesTips: [Category]?
     
     let keyboard = Typist()
     
@@ -45,6 +41,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        helpButton.isEnabled = categoriesTips != nil
+        sendButton.isEnabled = false
         
         tableView.heroModifiers = [.cascade]
         
@@ -175,9 +174,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func onSend(_ sender: Any) {
+        sendButton.isEnabled = false
+        
         newMessageContainer.isUserInteractionEnabled = false
         let newMessage = Message(text: newMessageTextView.text)
         newMessageTextView.text = ""
+        sendButton.isEnabled = false
         
         API.sendMessage(chatId: chat!.chatId, message: newMessage, algoId: usedTipId, completion: messageSent)
         
@@ -198,8 +200,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func messageSent(isSucces: Bool) -> () {
         if isSucces {
-            let cell = tableView.cellForRow(at: IndexPath(row: chat!.messages.count - 1, section: 0)) as! ChatMyMessageTableViewCell
-            cell.isSending = false
+            if chat!.messages.count != 0 {
+                if let cell = tableView.cellForRow(at: IndexPath(row: chat!.messages.count - 1, section: 0)) {
+                    if cell is ChatMyMessageTableViewCell {
+                        (cell as! ChatMyMessageTableViewCell).isSending = false
+                    }
+                }
+            }
             
             chat!.lastMessage = chat!.messages.last!
         } else {
@@ -213,6 +220,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         newMessageContainer.isUserInteractionEnabled = true
+        sendButton.isEnabled = true
         
         usedTipId = nil
         perform(#selector(getTips), with: nil, afterDelay: 1.0)
@@ -233,6 +241,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getTips() {
         categoriesTips = nil
+        helpButton.isEnabled = false
         API.getTips(chatId: chat!.chatId, completion: gotTipsByCategories)
     }
     
@@ -242,6 +251,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         for categoryJson in json.arrayValue {
             categoriesTips?.append(Category(json: categoryJson))
         }
+        helpButton.isEnabled = true
     }
     
     // -----------------------------------

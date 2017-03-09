@@ -49,6 +49,7 @@ class TipViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             let chatController = Router.getTopMostVisibleController() as! ChatViewController
             chatController.usedTipId = self.intersection!.tips[indexPath.row].algoId
             chatController.newMessageTextView.text = self.intersection!.tips[indexPath.row].text
+            chatController.sendButton.isEnabled = true
         }
     }
     
