@@ -5,7 +5,7 @@
 **AI Barney** is an iOS app that helps people to get know each other with adaptive tips during a conversation. To achieve that we intersect users' Facebook accounts. 
 
 ## Algorithm keypoints
-* Sentiment analysis based on Machine Learning algorithms.
+* Sentiment analysis for answers
 * Online tips update after every message.
 * Intersect person profiles in different categories, including general information, music, friends, interests, etc.
 
