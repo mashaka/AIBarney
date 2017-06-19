@@ -1,6 +1,6 @@
 # AI Barney
 
-![alt text](http://s019.radikal.ru/i633/1703/23/29501da128fe.png)
+![alt text](http://s019.radikal.ru/i601/1706/e1/b3d3c9fde31b.png)
 
 **AI Barney** is an iOS app that helps people to get know each other with adaptive tips during a conversation. To achieve that we intersect users' Facebook accounts. 
 
